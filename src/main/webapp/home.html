@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <title>租房筛选及评价平台(杭州)</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <!-- ArcGIS -->
+  <link rel="stylesheet" href="https://js.arcgis.com/3.25/esri/css/esri.css">
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="./css/map.css">
+  <!-- 复选框样式 -->
+  <link rel="stylesheet" href="./css/jquery-labelauty.css">
+  <style>
+    .dowebok ul { list-style-type: none; }
+    .dowebok li { display: inline-block; }
+    .dowebok li { margin: 5px 0; }
+    input.labelauty + label { font: 15px "Microsoft Yahei";}
+  </style>
+
+
+  <!-- ArcGIS -->
+  <script src="https://js.arcgis.com/3.25/"></script>
+
+  <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+  <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+  <!--[if lt IE 9]>
+  <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="header">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                  data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">租房筛选及评价平台(杭州)</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#">帮助</a></li>
+            <li><a href="#">地图</a></li>
+          </ul>
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="关键字(请用空格分隔)"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" title="在地图上搜索关键字"><span
+                            class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                  </span>
+              </div>
+            </div>
+          </form><!-- Search -->
+          <!-- panel-control-buttons -->
+          <div class="btn-group navbar-right" role="group">
+            <button type="button" class="btn btn-default navbar-btn" title="用户登录" id="btn-user">
+              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default navbar-btn" title="快速设置" id="btn-qcog">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-default navbar-btn" title="系统推荐" id="btn-star">
+              <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </div><!-- /.header -->
+  <div class="main">
+    <div class="view" id="map">
+      <!--div id="homeButton"></div-->
+      <div id="draw" class="esriSimpleSlider esriSimpleSliderVertical" style="z-index: 40">
+        <div class="esriSimpleSliderIncrementButton" role="button" id="drawpoly">
+          <span role="presentation">+</span>
+        </div>
+        <div class="esriSimpleSliderIncrementButton" role="button" id="polyq">
+          <span role="presentation">Q</span>
+        </div>
+        <div class="esriSimpleSliderIncrementButton" role="button" id="graphic-clear">
+          <span role="presentation">C</span>
+        </div>
+        <div class="esriSimpleSliderIncrementButton" role="button" id="poiq">
+          <span role="presentation">G</span>
+        </div>
+      </div>
+    </div><!-- /.view -->
+
+    <div class="qcog">
+      <div class="qcog-wrapper">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>快速设置(覆盖<a href="#">全局默认设置</a>)</h4>
+          </div>
+          <div class="panel-body">
+            <p class="hint">提示:</p>
+            <p>在下面, 您可以针对租房信息对它们进行筛选, 如果下拉框里的选项不能满足您的需求, 您可以尝试自己手动输入, 例如您想要朝向东或南的租房, 您可以在第一个输入框中输入"<span
+                    class="special">东 南</span>", 我们会尽力识别它们. 当然, 我们也为您提供了一些有趣的<span
+                    class="special">预设方案</span>.</p>
+              <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">朝向</span>
+                <input type="text" class="form-control" aria-label="..." placeholder="保持默认" id="direction">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#">全部</a></li>
+                    <li id="south"><a href="#">南</a></li>
+                    <li><a href="#">北</a></li>
+                    <li><a href="#">? ? ?</a></li>
+                  </ul>
+                </div><!-- /btn-group -->
+              </div><!-- /input-group -->
+              <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">价格</span>
+                <input type="text" class="form-control" aria-label="..." placeholder="保持默认">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-yen" aria-hidden="true"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#">全部</a></li>
+                    <li><a href="#">~1000</a></li>
+                    <li><a href="#">1000~2000</a></li>
+                    <li><a href="#">2000~</a></li>
+                    <li><a href="#">?~? ?~? ?~?</a></li>
+                  </ul>
+                </div><!-- /btn-group -->
+              </div><!-- /input-group -->
+              <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">楼层</span>
+                <input type="text" class="form-control" aria-label="..." placeholder="保持默认">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#">全部</a></li>
+                    <li><a href="#">低</a></li>
+                    <li><a href="#">中</a></li>
+                    <li><a href="#">高</a></li>
+                    <li><a href="#">? ? ?</a></li>
+                  </ul>
+                </div><!-- /btn-group -->
+              </div><!-- /input-group -->
+              <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">结构</span>
+                <input type="text" class="form-control" aria-label="..." placeholder="保持默认">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#">全部</a></li>
+                    <li><a href="#">1室1厅1卫</a></li>
+                    <li><a href="#">2室1厅1卫</a></li>
+                    <li><a href="#">3室2厅2卫</a></li>
+                    <li><a href="#">?室?厅?卫 ?室?厅?卫 ?室?厅?卫</a></li>
+                  </ul>
+                </div><!-- /btn-group -->
+              </div><!-- /input-group -->
+              <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">预设</span>
+                <input type="text" disabled class="form-control" aria-label="..." placeholder="禁用预设">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#">预设一</a></li>
+                    <li><a href="#">预设二</a></li>
+                    <li><a href="#">预设三</a></li>
+                    <li><a href="#">预设四</a></li>
+                  </ul>
+                </div><!-- /btn-group -->
+              </div><!-- /input-group -->
+              <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-danger" title="关闭快速设置" id="btn-qcog-cancel">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-primary" title="提交" id="sub">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                  </button>
+                </div>
+
+              </div>
+          </div><!-- /.panel-body -->
+        </div><!-- /.panel -->
+      </div><!-- /.qcog-wrapper -->
+    </div><!-- /.qcog -->
+    <div class="star">
+      <div class="star-wrapper">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4>查看推荐</h4>
+          </div>
+          <div class="panel-body">
+            POI标签选择
+            <div class="poi-tag">
+              <ul class="dowebok">
+                <li><input type="checkbox" name="checkbox" data-labelauty="购物"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="美食"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="娱乐"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="生活服务"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="公司"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="教育"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="金融"></li>
+              </ul>
+            </div>
+            <hr>
+
+
+          </div>
+        </div>
+      </div><!-- /.star-wrapper -->
+    </div><!-- /.star -->
+
+  </div><!-- /.main -->
+  <div class="footer">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <p class="navbar-text">
+          Copyright © 2018 <a href="#" class="navbar-link">An Esri-WebGIS-Contest Group</a> From <a
+                href="http://www.zju.edu.cn/" target="_blank" class="navbar-link">ZJU</a>. All Rights Reserved.
+        </p>
+      </div><!-- /.container-fluid -->
+    </nav>
+  </div><!-- /.footer -->
+</div><!-- /.wrapper -->
+</body>
+
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="./js/jquery-labelauty.js"></script>
+<script>
+    $(function(){
+        $(':input').labelauty();
+    });
+</script>
+
+<script src="./js/map/map-init.js"></script>
+<script src="./js/map/pointRender.js"></script>
+
+<script src="./js/attributeQuery.js"></script>
+<script src="./js/spatialQuery.js"></script>
+
+<script src="./js/motion.js"></script>
+
+</html>

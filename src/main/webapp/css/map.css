@@ -1,0 +1,97 @@
+html, body, div.wrapper {
+    height: 100%;
+}
+
+div.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+div.header, div.footer {
+    flex: 0 0 auto;
+}
+
+div.main {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+div.view {
+    flex: 1 1 100%; /* flex: flex-grow flex-shrink flex-basis */
+}
+
+div.qcog {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 0;
+    transition: all 500ms;
+    overflow: auto;
+}
+
+div.qcog-wrapper {
+    flex: 1 1 auto;
+    width: 300px;
+}
+
+div.star {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 0;
+    transition: all 500ms;
+    overflow: auto;
+}
+
+div.star-wrapper {
+    flex: 1 1 auto;
+    width: 300px;
+}
+
+div.view-toggle {
+}
+
+div.qcog-toggle {
+    flex: 0 0 300px;
+}
+
+div.star-toggle {
+    flex: 0 0 300px;
+}
+
+div.header nav, div.footer nav {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+div.header nav button.navbar-toggle {
+    margin: 8px 16px;
+}
+
+div.footer nav p.navbar-text {
+    float: none;
+    text-align: center;
+}
+
+div.footer nav p.navbar-text a.navbar-link {
+    color: rgb(0, 63, 136); /* 浙大求是蓝 */
+}
+
+div.main div.qcog div.input-group {
+    margin-bottom: 10px;
+}
+
+p.hint {
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+span.special {
+    font-weight: bold;
+    color: red;
+}
+
+#draw {
+    position:absolute;
+    left:20px;
+    bottom:10%
+}

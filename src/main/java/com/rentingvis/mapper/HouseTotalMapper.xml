@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rentingvis.mapper.HouseTotalMapper" >
+  <resultMap id="BaseResultMap" type="com.rentingvis.po.HouseTotal" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="commname" property="commname" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="structure" property="structure" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="DOUBLE" />
+    <result column="hpart" property="hpart" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="VARCHAR" />
+    <result column="decoration" property="decoration" jdbcType="VARCHAR" />
+    <result column="lat" property="lat" jdbcType="DOUBLE" />
+    <result column="lon" property="lon" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, commname, price, structure, area, hpart, direction, decoration, lat, lon
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.rentingvis.po.HouseTotalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from house_total
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from house_total
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from house_total
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.rentingvis.po.HouseTotalExample" >
+    delete from house_total
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.rentingvis.po.HouseTotal" >
+    insert into house_total (id, commname, price, 
+      structure, area, hpart, 
+      direction, decoration, lat, 
+      lon)
+    values (#{id,jdbcType=INTEGER}, #{commname,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+      #{structure,jdbcType=VARCHAR}, #{area,jdbcType=DOUBLE}, #{hpart,jdbcType=VARCHAR}, 
+      #{direction,jdbcType=VARCHAR}, #{decoration,jdbcType=VARCHAR}, #{lat,jdbcType=DOUBLE}, 
+      #{lon,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.rentingvis.po.HouseTotal" >
+    insert into house_total
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="commname != null" >
+        commname,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="structure != null" >
+        structure,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="hpart != null" >
+        hpart,
+      </if>
+      <if test="direction != null" >
+        direction,
+      </if>
+      <if test="decoration != null" >
+        decoration,
+      </if>
+      <if test="lat != null" >
+        lat,
+      </if>
+      <if test="lon != null" >
+        lon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="commname != null" >
+        #{commname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="structure != null" >
+        #{structure,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=DOUBLE},
+      </if>
+      <if test="hpart != null" >
+        #{hpart,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="decoration != null" >
+        #{decoration,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lon != null" >
+        #{lon,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.rentingvis.po.HouseTotalExample" resultType="java.lang.Integer" >
+    select count(*) from house_total
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update house_total
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.commname != null" >
+        commname = #{record.commname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=DOUBLE},
+      </if>
+      <if test="record.structure != null" >
+        structure = #{record.structure,jdbcType=VARCHAR},
+      </if>
+      <if test="record.area != null" >
+        area = #{record.area,jdbcType=DOUBLE},
+      </if>
+      <if test="record.hpart != null" >
+        hpart = #{record.hpart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.direction != null" >
+        direction = #{record.direction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.decoration != null" >
+        decoration = #{record.decoration,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lat != null" >
+        lat = #{record.lat,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lon != null" >
+        lon = #{record.lon,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update house_total
+    set id = #{record.id,jdbcType=INTEGER},
+      commname = #{record.commname,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DOUBLE},
+      structure = #{record.structure,jdbcType=VARCHAR},
+      area = #{record.area,jdbcType=DOUBLE},
+      hpart = #{record.hpart,jdbcType=VARCHAR},
+      direction = #{record.direction,jdbcType=VARCHAR},
+      decoration = #{record.decoration,jdbcType=VARCHAR},
+      lat = #{record.lat,jdbcType=DOUBLE},
+      lon = #{record.lon,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rentingvis.po.HouseTotal" >
+    update house_total
+    <set >
+      <if test="commname != null" >
+        commname = #{commname,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="structure != null" >
+        structure = #{structure,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=DOUBLE},
+      </if>
+      <if test="hpart != null" >
+        hpart = #{hpart,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        direction = #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="decoration != null" >
+        decoration = #{decoration,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null" >
+        lat = #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="lon != null" >
+        lon = #{lon,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rentingvis.po.HouseTotal" >
+    update house_total
+    set commname = #{commname,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      structure = #{structure,jdbcType=VARCHAR},
+      area = #{area,jdbcType=DOUBLE},
+      hpart = #{hpart,jdbcType=VARCHAR},
+      direction = #{direction,jdbcType=VARCHAR},
+      decoration = #{decoration,jdbcType=VARCHAR},
+      lat = #{lat,jdbcType=DOUBLE},
+      lon = #{lon,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="polygonHouseQuery" resultMap="BaseResultMap" parameterType="java.lang.Double">
+    select * from house_total
+    where st_within( ST_Transform(ST_SetSRID(ST_MakePoint(lon, lat), 4326), 3857),
+                      ST_MakeEnvelope(#{xmin, jdbcType=DOUBLE}, #{ymin, jdbcType=DOUBLE},
+                                      #{xmax, jdbcType=DOUBLE}, #{ymax, jdbcType=DOUBLE}, 3857) )
+  </select>
+
+</mapper>
