@@ -296,7 +296,11 @@
     from poi_hz
     where st_dwithin( geom,
                       st_setsrid( st_makepoint( #{co_x, jdbcType=DOUBLE}, #{co_y, jdbcType=DOUBLE} ), 4326 ),
-                      500, true)
+                      500, true) and
+    <foreach collection="list" item="itm" open="(" separator=" or "  close=")">
+      std_tag LIKE #{itm}
+    </foreach>
+
   </select>
 
 </mapper>

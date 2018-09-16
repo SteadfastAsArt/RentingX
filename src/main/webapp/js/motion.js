@@ -63,6 +63,7 @@ jQuery(function () {
         map.graphics.clear();
         polygonLayer.clear();
         poiRangeLayer.clear();
+        poiLayer.clear();
     } );
 
 });

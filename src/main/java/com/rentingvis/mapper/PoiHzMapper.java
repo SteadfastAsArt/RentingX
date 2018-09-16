@@ -2,7 +2,7 @@ package com.rentingvis.mapper;
 
 import com.rentingvis.po.PoiHz;
 import com.rentingvis.po.PoiHzExample;
-import java.util.List;
+import java.util.*;
 import org.apache.ibatis.annotations.Param;
 
 public interface PoiHzMapper {
@@ -28,5 +28,7 @@ public interface PoiHzMapper {
 
     int updateByPrimaryKey(PoiHz record);
 
-    List<PoiHz> poiRangeQuery(@Param("co_x") Double co_x, @Param("co_y") Double co_y );
+    List<PoiHz> poiRangeQuery(@Param("co_x") Double co_x, @Param("co_y") Double co_y,
+                              @Param("list") List<String> list );
+
 }

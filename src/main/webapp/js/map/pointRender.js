@@ -16,6 +16,8 @@ require( [
         markerSymbol.setColor(new Color("#9955FF"));
         markerSymbol.setSize(5);
 
+        poiLayer.clear();
+
         for (i in json) {
             var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol);
             var content = "<br>Address: " + json[i].address;
