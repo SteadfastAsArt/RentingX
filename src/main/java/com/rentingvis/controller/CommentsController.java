@@ -1,9 +1,7 @@
 package com.rentingvis.controller;
 
-
 import java.util.*;
 
-import com.rentingvis.service.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +17,11 @@ public class CommentsController {
     @Autowired
     private CommentsService commentsService;
 
-    @RequestMapping(value="/", method = {RequestMethod.GET})
+    @RequestMapping(value="/comments", method = {RequestMethod.GET})
     @ResponseBody
-    public List<CommunityComments> 
+    public List<CommunityComments> showComments(@RequestParam(value="community_name") String community_name) {
+        List<CommunityComments> results = commentsService.commentsQuery(community_name);
+        return results;
+    }
+
 }
