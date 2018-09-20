@@ -59,7 +59,7 @@
           <form class="navbar-form navbar-left">
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="关键字(请用空格分隔)"/>
+                <input id="firstk" type="text" class="form-control" placeholder="关键字(请用空格分隔)"/>
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button" title="在地图上搜索关键字"><span
                             class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
@@ -67,6 +67,8 @@
               </div>
             </div>
           </form><!-- Search -->
+
+
           <!-- panel-control-buttons -->
           <div class="btn-group navbar-right" role="group">
             <button type="button" class="btn btn-default navbar-btn" title="用户登录" id="btn-user">
@@ -90,14 +92,17 @@
         <div class="esriSimpleSliderIncrementButton" role="button" id="drawpoly">
           <span role="presentation">+</span>
         </div>
-        <div class="esriSimpleSliderIncrementButton" role="button" id="polyq">
-          <span role="presentation">Q</span>
+        <div class="esriSimpleSliderIncrementButton" role="button" id="pick">
+          <span role="presentation">?</span>
+        </div>
+        <div class="esriSimpleSliderIncrementButton" role="button" id="poiq">
+          <span role="presentation">G</span>
         </div>
         <div class="esriSimpleSliderIncrementButton" role="button" id="graphic-clear">
           <span role="presentation">C</span>
         </div>
-        <div class="esriSimpleSliderIncrementButton" role="button" id="poiq">
-          <span role="presentation">G</span>
+        <div class="esriSimpleSliderIncrementButton" role="button" id="find-optimal">
+          <span role="presentation">O</span>
         </div>
       </div>
     </div><!-- /.view -->
@@ -271,7 +276,7 @@
 
 <script src="./js/attributeQuery.js"></script>
 <script src="./js/spatialQuery.js"></script>
-
+<script src="./js/pickPlaceOptimal.js"></script>
 <script src="./js/motion.js"></script>
 
 </html>

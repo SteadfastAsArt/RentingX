@@ -17,5 +17,5 @@
 	<bean id="attributeService" class="com.rentingvis.service.impl.AttributeServiceImp"></bean>
 	<bean id="spatialService" class="com.rentingvis.service.impl.SpatialServiceImp"></bean>
 	<bean id="commentsService" class="com.rentingvis.service.impl.CommentsServiceImp"></bean>
-
+	<bean id="findOptimalService" class="com.rentingvis.service.impl.FindOptimalServiceImp"></bean>
 </beans>

@@ -3,6 +3,7 @@ var tb;  // tb = new Draw(map);
 var polygonLayer;
 var poiRangeLayer;
 var poiLayer;
+var optimalLayer;
 
 require(["esri/map", "esri/layers/GraphicsLayer", "dojo/domReady!"],
     function( Map, GraphicsLayer ) {
@@ -14,7 +15,9 @@ require(["esri/map", "esri/layers/GraphicsLayer", "dojo/domReady!"],
         polygonLayer = new GraphicsLayer({ id: "query_polygon" });
         poiRangeLayer = new GraphicsLayer({ id: "query_poi" });
         poiLayer = new GraphicsLayer({ id: "poi" });
+        optimalLayer = new GraphicsLayer({ id: "optimal" });
         map.addLayer(polygonLayer);
         map.addLayer(poiRangeLayer);
         map.addLayer(poiLayer);
+        map.addLayer(optimalLayer);
 });

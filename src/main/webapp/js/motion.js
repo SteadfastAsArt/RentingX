@@ -56,7 +56,13 @@ jQuery(function () {
     $("#drawpoly").click( function () {
         map.disableMapNavigation();
         tb.activate("extent");
-    } );
+    });
+
+    //绘制多点
+    $("#pick").click( function () {
+        map.disableMapNavigation();
+        tb.activate("multipoint");
+    });
 
     //清除图像
     $("#graphic-clear").click( function () {
@@ -64,6 +70,6 @@ jQuery(function () {
         polygonLayer.clear();
         poiRangeLayer.clear();
         poiLayer.clear();
-    } );
-
+        optimalLayer.clear();
+    });
 });

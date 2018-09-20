@@ -634,6 +634,126 @@ public class HouseTotalExample {
             return (Criteria) this;
         }
 
+        public Criteria andXIsNull() {
+            addCriterion("x is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXIsNotNull() {
+            addCriterion("x is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andXEqualTo(Double value) {
+            addCriterion("x =", value, "x");
+            return (Criteria) this;
+        }
+
+        public Criteria andXNotEqualTo(Double value) {
+            addCriterion("x <>", value, "x");
+            return (Criteria) this;
+        }
+
+        public Criteria andXGreaterThan(Double value) {
+            addCriterion("x >", value, "x");
+            return (Criteria) this;
+        }
+
+        public Criteria andXGreaterThanOrEqualTo(Double value) {
+            addCriterion("x >=", value, "x");
+            return (Criteria) this;
+        }
+
+        public Criteria andXLessThan(Double value) {
+            addCriterion("x <", value, "x");
+            return (Criteria) this;
+        }
+
+        public Criteria andXLessThanOrEqualTo(Double value) {
+            addCriterion("x <=", value, "x");
+            return (Criteria) this;
+        }
+
+        public Criteria andXIn(List<Double> values) {
+            addCriterion("x in", values, "x");
+            return (Criteria) this;
+        }
+
+        public Criteria andXNotIn(List<Double> values) {
+            addCriterion("x not in", values, "x");
+            return (Criteria) this;
+        }
+
+        public Criteria andXBetween(Double value1, Double value2) {
+            addCriterion("x between", value1, value2, "x");
+            return (Criteria) this;
+        }
+
+        public Criteria andXNotBetween(Double value1, Double value2) {
+            addCriterion("x not between", value1, value2, "x");
+            return (Criteria) this;
+        }
+
+        public Criteria andYIsNull() {
+            addCriterion("y is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andYIsNotNull() {
+            addCriterion("y is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andYEqualTo(Double value) {
+            addCriterion("y =", value, "y");
+            return (Criteria) this;
+        }
+
+        public Criteria andYNotEqualTo(Double value) {
+            addCriterion("y <>", value, "y");
+            return (Criteria) this;
+        }
+
+        public Criteria andYGreaterThan(Double value) {
+            addCriterion("y >", value, "y");
+            return (Criteria) this;
+        }
+
+        public Criteria andYGreaterThanOrEqualTo(Double value) {
+            addCriterion("y >=", value, "y");
+            return (Criteria) this;
+        }
+
+        public Criteria andYLessThan(Double value) {
+            addCriterion("y <", value, "y");
+            return (Criteria) this;
+        }
+
+        public Criteria andYLessThanOrEqualTo(Double value) {
+            addCriterion("y <=", value, "y");
+            return (Criteria) this;
+        }
+
+        public Criteria andYIn(List<Double> values) {
+            addCriterion("y in", values, "y");
+            return (Criteria) this;
+        }
+
+        public Criteria andYNotIn(List<Double> values) {
+            addCriterion("y not in", values, "y");
+            return (Criteria) this;
+        }
+
+        public Criteria andYBetween(Double value1, Double value2) {
+            addCriterion("y between", value1, value2, "y");
+            return (Criteria) this;
+        }
+
+        public Criteria andYNotBetween(Double value1, Double value2) {
+            addCriterion("y not between", value1, value2, "y");
+            return (Criteria) this;
+        }
+
         public Criteria andLatIsNull() {
             addCriterion("lat is null");
             return (Criteria) this;
@@ -751,6 +871,1026 @@ public class HouseTotalExample {
 
         public Criteria andLonNotBetween(Double value1, Double value2) {
             addCriterion("lon not between", value1, value2, "lon");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperIsNull() {
+            addCriterion("priceper is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperIsNotNull() {
+            addCriterion("priceper is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperEqualTo(Double value) {
+            addCriterion("priceper =", value, "priceper");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperNotEqualTo(Double value) {
+            addCriterion("priceper <>", value, "priceper");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperGreaterThan(Double value) {
+            addCriterion("priceper >", value, "priceper");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperGreaterThanOrEqualTo(Double value) {
+            addCriterion("priceper >=", value, "priceper");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperLessThan(Double value) {
+            addCriterion("priceper <", value, "priceper");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperLessThanOrEqualTo(Double value) {
+            addCriterion("priceper <=", value, "priceper");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperIn(List<Double> values) {
+            addCriterion("priceper in", values, "priceper");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperNotIn(List<Double> values) {
+            addCriterion("priceper not in", values, "priceper");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperBetween(Double value1, Double value2) {
+            addCriterion("priceper between", value1, value2, "priceper");
+            return (Criteria) this;
+        }
+
+        public Criteria andPriceperNotBetween(Double value1, Double value2) {
+            addCriterion("priceper not between", value1, value2, "priceper");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleIsNull() {
+            addCriterion("pricescole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleIsNotNull() {
+            addCriterion("pricescole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleEqualTo(Double value) {
+            addCriterion("pricescole =", value, "pricescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleNotEqualTo(Double value) {
+            addCriterion("pricescole <>", value, "pricescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleGreaterThan(Double value) {
+            addCriterion("pricescole >", value, "pricescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("pricescole >=", value, "pricescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleLessThan(Double value) {
+            addCriterion("pricescole <", value, "pricescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleLessThanOrEqualTo(Double value) {
+            addCriterion("pricescole <=", value, "pricescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleIn(List<Double> values) {
+            addCriterion("pricescole in", values, "pricescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleNotIn(List<Double> values) {
+            addCriterion("pricescole not in", values, "pricescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleBetween(Double value1, Double value2) {
+            addCriterion("pricescole between", value1, value2, "pricescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andPricescoleNotBetween(Double value1, Double value2) {
+            addCriterion("pricescole not between", value1, value2, "pricescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleIsNull() {
+            addCriterion("decorationscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleIsNotNull() {
+            addCriterion("decorationscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleEqualTo(Double value) {
+            addCriterion("decorationscole =", value, "decorationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleNotEqualTo(Double value) {
+            addCriterion("decorationscole <>", value, "decorationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleGreaterThan(Double value) {
+            addCriterion("decorationscole >", value, "decorationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("decorationscole >=", value, "decorationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleLessThan(Double value) {
+            addCriterion("decorationscole <", value, "decorationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleLessThanOrEqualTo(Double value) {
+            addCriterion("decorationscole <=", value, "decorationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleIn(List<Double> values) {
+            addCriterion("decorationscole in", values, "decorationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleNotIn(List<Double> values) {
+            addCriterion("decorationscole not in", values, "decorationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleBetween(Double value1, Double value2) {
+            addCriterion("decorationscole between", value1, value2, "decorationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDecorationscoleNotBetween(Double value1, Double value2) {
+            addCriterion("decorationscole not between", value1, value2, "decorationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleIsNull() {
+            addCriterion("heightscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleIsNotNull() {
+            addCriterion("heightscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleEqualTo(Double value) {
+            addCriterion("heightscole =", value, "heightscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleNotEqualTo(Double value) {
+            addCriterion("heightscole <>", value, "heightscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleGreaterThan(Double value) {
+            addCriterion("heightscole >", value, "heightscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("heightscole >=", value, "heightscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleLessThan(Double value) {
+            addCriterion("heightscole <", value, "heightscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleLessThanOrEqualTo(Double value) {
+            addCriterion("heightscole <=", value, "heightscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleIn(List<Double> values) {
+            addCriterion("heightscole in", values, "heightscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleNotIn(List<Double> values) {
+            addCriterion("heightscole not in", values, "heightscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleBetween(Double value1, Double value2) {
+            addCriterion("heightscole between", value1, value2, "heightscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHeightscoleNotBetween(Double value1, Double value2) {
+            addCriterion("heightscole not between", value1, value2, "heightscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleIsNull() {
+            addCriterion("directionscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleIsNotNull() {
+            addCriterion("directionscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleEqualTo(Double value) {
+            addCriterion("directionscole =", value, "directionscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleNotEqualTo(Double value) {
+            addCriterion("directionscole <>", value, "directionscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleGreaterThan(Double value) {
+            addCriterion("directionscole >", value, "directionscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("directionscole >=", value, "directionscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleLessThan(Double value) {
+            addCriterion("directionscole <", value, "directionscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleLessThanOrEqualTo(Double value) {
+            addCriterion("directionscole <=", value, "directionscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleIn(List<Double> values) {
+            addCriterion("directionscole in", values, "directionscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleNotIn(List<Double> values) {
+            addCriterion("directionscole not in", values, "directionscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleBetween(Double value1, Double value2) {
+            addCriterion("directionscole between", value1, value2, "directionscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andDirectionscoleNotBetween(Double value1, Double value2) {
+            addCriterion("directionscole not between", value1, value2, "directionscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleIsNull() {
+            addCriterion("housescole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleIsNotNull() {
+            addCriterion("housescole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleEqualTo(Double value) {
+            addCriterion("housescole =", value, "housescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleNotEqualTo(Double value) {
+            addCriterion("housescole <>", value, "housescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleGreaterThan(Double value) {
+            addCriterion("housescole >", value, "housescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("housescole >=", value, "housescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleLessThan(Double value) {
+            addCriterion("housescole <", value, "housescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleLessThanOrEqualTo(Double value) {
+            addCriterion("housescole <=", value, "housescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleIn(List<Double> values) {
+            addCriterion("housescole in", values, "housescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleNotIn(List<Double> values) {
+            addCriterion("housescole not in", values, "housescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleBetween(Double value1, Double value2) {
+            addCriterion("housescole between", value1, value2, "housescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andHousescoleNotBetween(Double value1, Double value2) {
+            addCriterion("housescole not between", value1, value2, "housescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleIsNull() {
+            addCriterion("transportscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleIsNotNull() {
+            addCriterion("transportscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleEqualTo(Double value) {
+            addCriterion("transportscole =", value, "transportscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleNotEqualTo(Double value) {
+            addCriterion("transportscole <>", value, "transportscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleGreaterThan(Double value) {
+            addCriterion("transportscole >", value, "transportscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("transportscole >=", value, "transportscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleLessThan(Double value) {
+            addCriterion("transportscole <", value, "transportscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleLessThanOrEqualTo(Double value) {
+            addCriterion("transportscole <=", value, "transportscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleIn(List<Double> values) {
+            addCriterion("transportscole in", values, "transportscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleNotIn(List<Double> values) {
+            addCriterion("transportscole not in", values, "transportscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleBetween(Double value1, Double value2) {
+            addCriterion("transportscole between", value1, value2, "transportscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTransportscoleNotBetween(Double value1, Double value2) {
+            addCriterion("transportscole not between", value1, value2, "transportscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleIsNull() {
+            addCriterion("educationscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleIsNotNull() {
+            addCriterion("educationscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleEqualTo(Double value) {
+            addCriterion("educationscole =", value, "educationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleNotEqualTo(Double value) {
+            addCriterion("educationscole <>", value, "educationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleGreaterThan(Double value) {
+            addCriterion("educationscole >", value, "educationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("educationscole >=", value, "educationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleLessThan(Double value) {
+            addCriterion("educationscole <", value, "educationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleLessThanOrEqualTo(Double value) {
+            addCriterion("educationscole <=", value, "educationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleIn(List<Double> values) {
+            addCriterion("educationscole in", values, "educationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleNotIn(List<Double> values) {
+            addCriterion("educationscole not in", values, "educationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleBetween(Double value1, Double value2) {
+            addCriterion("educationscole between", value1, value2, "educationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEducationscoleNotBetween(Double value1, Double value2) {
+            addCriterion("educationscole not between", value1, value2, "educationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleIsNull() {
+            addCriterion("treatmentscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleIsNotNull() {
+            addCriterion("treatmentscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleEqualTo(Double value) {
+            addCriterion("treatmentscole =", value, "treatmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleNotEqualTo(Double value) {
+            addCriterion("treatmentscole <>", value, "treatmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleGreaterThan(Double value) {
+            addCriterion("treatmentscole >", value, "treatmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("treatmentscole >=", value, "treatmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleLessThan(Double value) {
+            addCriterion("treatmentscole <", value, "treatmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleLessThanOrEqualTo(Double value) {
+            addCriterion("treatmentscole <=", value, "treatmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleIn(List<Double> values) {
+            addCriterion("treatmentscole in", values, "treatmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleNotIn(List<Double> values) {
+            addCriterion("treatmentscole not in", values, "treatmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleBetween(Double value1, Double value2) {
+            addCriterion("treatmentscole between", value1, value2, "treatmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTreatmentscoleNotBetween(Double value1, Double value2) {
+            addCriterion("treatmentscole not between", value1, value2, "treatmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleIsNull() {
+            addCriterion("shopscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleIsNotNull() {
+            addCriterion("shopscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleEqualTo(Double value) {
+            addCriterion("shopscole =", value, "shopscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleNotEqualTo(Double value) {
+            addCriterion("shopscole <>", value, "shopscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleGreaterThan(Double value) {
+            addCriterion("shopscole >", value, "shopscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("shopscole >=", value, "shopscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleLessThan(Double value) {
+            addCriterion("shopscole <", value, "shopscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleLessThanOrEqualTo(Double value) {
+            addCriterion("shopscole <=", value, "shopscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleIn(List<Double> values) {
+            addCriterion("shopscole in", values, "shopscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleNotIn(List<Double> values) {
+            addCriterion("shopscole not in", values, "shopscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleBetween(Double value1, Double value2) {
+            addCriterion("shopscole between", value1, value2, "shopscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopscoleNotBetween(Double value1, Double value2) {
+            addCriterion("shopscole not between", value1, value2, "shopscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleIsNull() {
+            addCriterion("lifescole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleIsNotNull() {
+            addCriterion("lifescole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleEqualTo(Double value) {
+            addCriterion("lifescole =", value, "lifescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleNotEqualTo(Double value) {
+            addCriterion("lifescole <>", value, "lifescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleGreaterThan(Double value) {
+            addCriterion("lifescole >", value, "lifescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("lifescole >=", value, "lifescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleLessThan(Double value) {
+            addCriterion("lifescole <", value, "lifescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleLessThanOrEqualTo(Double value) {
+            addCriterion("lifescole <=", value, "lifescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleIn(List<Double> values) {
+            addCriterion("lifescole in", values, "lifescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleNotIn(List<Double> values) {
+            addCriterion("lifescole not in", values, "lifescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleBetween(Double value1, Double value2) {
+            addCriterion("lifescole between", value1, value2, "lifescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLifescoleNotBetween(Double value1, Double value2) {
+            addCriterion("lifescole not between", value1, value2, "lifescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleIsNull() {
+            addCriterion("entertainmentscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleIsNotNull() {
+            addCriterion("entertainmentscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleEqualTo(Double value) {
+            addCriterion("entertainmentscole =", value, "entertainmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleNotEqualTo(Double value) {
+            addCriterion("entertainmentscole <>", value, "entertainmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleGreaterThan(Double value) {
+            addCriterion("entertainmentscole >", value, "entertainmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("entertainmentscole >=", value, "entertainmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleLessThan(Double value) {
+            addCriterion("entertainmentscole <", value, "entertainmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleLessThanOrEqualTo(Double value) {
+            addCriterion("entertainmentscole <=", value, "entertainmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleIn(List<Double> values) {
+            addCriterion("entertainmentscole in", values, "entertainmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleNotIn(List<Double> values) {
+            addCriterion("entertainmentscole not in", values, "entertainmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleBetween(Double value1, Double value2) {
+            addCriterion("entertainmentscole between", value1, value2, "entertainmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEntertainmentscoleNotBetween(Double value1, Double value2) {
+            addCriterion("entertainmentscole not between", value1, value2, "entertainmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleIsNull() {
+            addCriterion("financescole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleIsNotNull() {
+            addCriterion("financescole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleEqualTo(Double value) {
+            addCriterion("financescole =", value, "financescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleNotEqualTo(Double value) {
+            addCriterion("financescole <>", value, "financescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleGreaterThan(Double value) {
+            addCriterion("financescole >", value, "financescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("financescole >=", value, "financescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleLessThan(Double value) {
+            addCriterion("financescole <", value, "financescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleLessThanOrEqualTo(Double value) {
+            addCriterion("financescole <=", value, "financescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleIn(List<Double> values) {
+            addCriterion("financescole in", values, "financescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleNotIn(List<Double> values) {
+            addCriterion("financescole not in", values, "financescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleBetween(Double value1, Double value2) {
+            addCriterion("financescole between", value1, value2, "financescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andFinancescoleNotBetween(Double value1, Double value2) {
+            addCriterion("financescole not between", value1, value2, "financescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleIsNull() {
+            addCriterion("servicescole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleIsNotNull() {
+            addCriterion("servicescole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleEqualTo(Double value) {
+            addCriterion("servicescole =", value, "servicescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleNotEqualTo(Double value) {
+            addCriterion("servicescole <>", value, "servicescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleGreaterThan(Double value) {
+            addCriterion("servicescole >", value, "servicescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("servicescole >=", value, "servicescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleLessThan(Double value) {
+            addCriterion("servicescole <", value, "servicescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleLessThanOrEqualTo(Double value) {
+            addCriterion("servicescole <=", value, "servicescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleIn(List<Double> values) {
+            addCriterion("servicescole in", values, "servicescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleNotIn(List<Double> values) {
+            addCriterion("servicescole not in", values, "servicescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleBetween(Double value1, Double value2) {
+            addCriterion("servicescole between", value1, value2, "servicescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andServicescoleNotBetween(Double value1, Double value2) {
+            addCriterion("servicescole not between", value1, value2, "servicescole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleIsNull() {
+            addCriterion("environmentscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleIsNotNull() {
+            addCriterion("environmentscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleEqualTo(Double value) {
+            addCriterion("environmentscole =", value, "environmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleNotEqualTo(Double value) {
+            addCriterion("environmentscole <>", value, "environmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleGreaterThan(Double value) {
+            addCriterion("environmentscole >", value, "environmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("environmentscole >=", value, "environmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleLessThan(Double value) {
+            addCriterion("environmentscole <", value, "environmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleLessThanOrEqualTo(Double value) {
+            addCriterion("environmentscole <=", value, "environmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleIn(List<Double> values) {
+            addCriterion("environmentscole in", values, "environmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleNotIn(List<Double> values) {
+            addCriterion("environmentscole not in", values, "environmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleBetween(Double value1, Double value2) {
+            addCriterion("environmentscole between", value1, value2, "environmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnvironmentscoleNotBetween(Double value1, Double value2) {
+            addCriterion("environmentscole not between", value1, value2, "environmentscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleIsNull() {
+            addCriterion("locationscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleIsNotNull() {
+            addCriterion("locationscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleEqualTo(Double value) {
+            addCriterion("locationscole =", value, "locationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleNotEqualTo(Double value) {
+            addCriterion("locationscole <>", value, "locationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleGreaterThan(Double value) {
+            addCriterion("locationscole >", value, "locationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("locationscole >=", value, "locationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleLessThan(Double value) {
+            addCriterion("locationscole <", value, "locationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleLessThanOrEqualTo(Double value) {
+            addCriterion("locationscole <=", value, "locationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleIn(List<Double> values) {
+            addCriterion("locationscole in", values, "locationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleNotIn(List<Double> values) {
+            addCriterion("locationscole not in", values, "locationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleBetween(Double value1, Double value2) {
+            addCriterion("locationscole between", value1, value2, "locationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationscoleNotBetween(Double value1, Double value2) {
+            addCriterion("locationscole not between", value1, value2, "locationscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleIsNull() {
+            addCriterion("totalscole is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleIsNotNull() {
+            addCriterion("totalscole is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleEqualTo(Double value) {
+            addCriterion("totalscole =", value, "totalscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleNotEqualTo(Double value) {
+            addCriterion("totalscole <>", value, "totalscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleGreaterThan(Double value) {
+            addCriterion("totalscole >", value, "totalscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleGreaterThanOrEqualTo(Double value) {
+            addCriterion("totalscole >=", value, "totalscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleLessThan(Double value) {
+            addCriterion("totalscole <", value, "totalscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleLessThanOrEqualTo(Double value) {
+            addCriterion("totalscole <=", value, "totalscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleIn(List<Double> values) {
+            addCriterion("totalscole in", values, "totalscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleNotIn(List<Double> values) {
+            addCriterion("totalscole not in", values, "totalscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleBetween(Double value1, Double value2) {
+            addCriterion("totalscole between", value1, value2, "totalscole");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalscoleNotBetween(Double value1, Double value2) {
+            addCriterion("totalscole not between", value1, value2, "totalscole");
             return (Criteria) this;
         }
     }

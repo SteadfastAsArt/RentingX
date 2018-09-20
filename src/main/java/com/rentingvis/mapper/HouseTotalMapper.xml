@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.rentingvis.mapper.HouseTotalMapper" >
   <resultMap id="BaseResultMap" type="com.rentingvis.po.HouseTotal" >
-    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="id" property="id" jdbcType="INTEGER" />
     <result column="commname" property="commname" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DOUBLE" />
     <result column="structure" property="structure" jdbcType="VARCHAR" />
@@ -10,8 +10,27 @@
     <result column="hpart" property="hpart" jdbcType="VARCHAR" />
     <result column="direction" property="direction" jdbcType="VARCHAR" />
     <result column="decoration" property="decoration" jdbcType="VARCHAR" />
+    <result column="x" property="x" jdbcType="DOUBLE" />
+    <result column="y" property="y" jdbcType="DOUBLE" />
     <result column="lat" property="lat" jdbcType="DOUBLE" />
     <result column="lon" property="lon" jdbcType="DOUBLE" />
+    <result column="priceper" property="priceper" jdbcType="DOUBLE" />
+    <result column="pricescole" property="pricescole" jdbcType="DOUBLE" />
+    <result column="decorationscole" property="decorationscole" jdbcType="DOUBLE" />
+    <result column="heightscole" property="heightscole" jdbcType="DOUBLE" />
+    <result column="directionscole" property="directionscole" jdbcType="DOUBLE" />
+    <result column="housescole" property="housescole" jdbcType="DOUBLE" />
+    <result column="transportscole" property="transportscole" jdbcType="DOUBLE" />
+    <result column="educationscole" property="educationscole" jdbcType="DOUBLE" />
+    <result column="treatmentscole" property="treatmentscole" jdbcType="DOUBLE" />
+    <result column="shopscole" property="shopscole" jdbcType="DOUBLE" />
+    <result column="lifescole" property="lifescole" jdbcType="DOUBLE" />
+    <result column="entertainmentscole" property="entertainmentscole" jdbcType="DOUBLE" />
+    <result column="financescole" property="financescole" jdbcType="DOUBLE" />
+    <result column="servicescole" property="servicescole" jdbcType="DOUBLE" />
+    <result column="environmentscole" property="environmentscole" jdbcType="DOUBLE" />
+    <result column="locationscole" property="locationscole" jdbcType="DOUBLE" />
+    <result column="totalscole" property="totalscole" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,7 +91,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, commname, price, structure, area, hpart, direction, decoration, lat, lon
+    id, commname, price, structure, area, hpart, direction, decoration, x, y, lat, lon, 
+    priceper, pricescole, decorationscole, heightscole, directionscole, housescole, transportscole, 
+    educationscole, treatmentscole, shopscole, lifescole, entertainmentscole, financescole, 
+    servicescole, environmentscole, locationscole, totalscole
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.rentingvis.po.HouseTotalExample" >
     select
@@ -88,16 +110,6 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from house_total
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from house_total
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
   <delete id="deleteByExample" parameterType="com.rentingvis.po.HouseTotalExample" >
     delete from house_total
     <if test="_parameter != null" >
@@ -107,12 +119,24 @@
   <insert id="insert" parameterType="com.rentingvis.po.HouseTotal" >
     insert into house_total (id, commname, price, 
       structure, area, hpart, 
-      direction, decoration, lat, 
-      lon)
+      direction, decoration, x, 
+      y, lat, lon, priceper, 
+      pricescole, decorationscole, heightscole, 
+      directionscole, housescole, transportscole, 
+      educationscole, treatmentscole, shopscole, 
+      lifescole, entertainmentscole, financescole, 
+      servicescole, environmentscole, locationscole, 
+      totalscole)
     values (#{id,jdbcType=INTEGER}, #{commname,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
       #{structure,jdbcType=VARCHAR}, #{area,jdbcType=DOUBLE}, #{hpart,jdbcType=VARCHAR}, 
-      #{direction,jdbcType=VARCHAR}, #{decoration,jdbcType=VARCHAR}, #{lat,jdbcType=DOUBLE}, 
-      #{lon,jdbcType=DOUBLE})
+      #{direction,jdbcType=VARCHAR}, #{decoration,jdbcType=VARCHAR}, #{x,jdbcType=DOUBLE}, 
+      #{y,jdbcType=DOUBLE}, #{lat,jdbcType=DOUBLE}, #{lon,jdbcType=DOUBLE}, #{priceper,jdbcType=DOUBLE}, 
+      #{pricescole,jdbcType=DOUBLE}, #{decorationscole,jdbcType=DOUBLE}, #{heightscole,jdbcType=DOUBLE}, 
+      #{directionscole,jdbcType=DOUBLE}, #{housescole,jdbcType=DOUBLE}, #{transportscole,jdbcType=DOUBLE}, 
+      #{educationscole,jdbcType=DOUBLE}, #{treatmentscole,jdbcType=DOUBLE}, #{shopscole,jdbcType=DOUBLE}, 
+      #{lifescole,jdbcType=DOUBLE}, #{entertainmentscole,jdbcType=DOUBLE}, #{financescole,jdbcType=DOUBLE}, 
+      #{servicescole,jdbcType=DOUBLE}, #{environmentscole,jdbcType=DOUBLE}, #{locationscole,jdbcType=DOUBLE}, 
+      #{totalscole,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="com.rentingvis.po.HouseTotal" >
     insert into house_total
@@ -141,11 +165,68 @@
       <if test="decoration != null" >
         decoration,
       </if>
+      <if test="x != null" >
+        x,
+      </if>
+      <if test="y != null" >
+        y,
+      </if>
       <if test="lat != null" >
         lat,
       </if>
       <if test="lon != null" >
         lon,
+      </if>
+      <if test="priceper != null" >
+        priceper,
+      </if>
+      <if test="pricescole != null" >
+        pricescole,
+      </if>
+      <if test="decorationscole != null" >
+        decorationscole,
+      </if>
+      <if test="heightscole != null" >
+        heightscole,
+      </if>
+      <if test="directionscole != null" >
+        directionscole,
+      </if>
+      <if test="housescole != null" >
+        housescole,
+      </if>
+      <if test="transportscole != null" >
+        transportscole,
+      </if>
+      <if test="educationscole != null" >
+        educationscole,
+      </if>
+      <if test="treatmentscole != null" >
+        treatmentscole,
+      </if>
+      <if test="shopscole != null" >
+        shopscole,
+      </if>
+      <if test="lifescole != null" >
+        lifescole,
+      </if>
+      <if test="entertainmentscole != null" >
+        entertainmentscole,
+      </if>
+      <if test="financescole != null" >
+        financescole,
+      </if>
+      <if test="servicescole != null" >
+        servicescole,
+      </if>
+      <if test="environmentscole != null" >
+        environmentscole,
+      </if>
+      <if test="locationscole != null" >
+        locationscole,
+      </if>
+      <if test="totalscole != null" >
+        totalscole,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -173,11 +254,68 @@
       <if test="decoration != null" >
         #{decoration,jdbcType=VARCHAR},
       </if>
+      <if test="x != null" >
+        #{x,jdbcType=DOUBLE},
+      </if>
+      <if test="y != null" >
+        #{y,jdbcType=DOUBLE},
+      </if>
       <if test="lat != null" >
         #{lat,jdbcType=DOUBLE},
       </if>
       <if test="lon != null" >
         #{lon,jdbcType=DOUBLE},
+      </if>
+      <if test="priceper != null" >
+        #{priceper,jdbcType=DOUBLE},
+      </if>
+      <if test="pricescole != null" >
+        #{pricescole,jdbcType=DOUBLE},
+      </if>
+      <if test="decorationscole != null" >
+        #{decorationscole,jdbcType=DOUBLE},
+      </if>
+      <if test="heightscole != null" >
+        #{heightscole,jdbcType=DOUBLE},
+      </if>
+      <if test="directionscole != null" >
+        #{directionscole,jdbcType=DOUBLE},
+      </if>
+      <if test="housescole != null" >
+        #{housescole,jdbcType=DOUBLE},
+      </if>
+      <if test="transportscole != null" >
+        #{transportscole,jdbcType=DOUBLE},
+      </if>
+      <if test="educationscole != null" >
+        #{educationscole,jdbcType=DOUBLE},
+      </if>
+      <if test="treatmentscole != null" >
+        #{treatmentscole,jdbcType=DOUBLE},
+      </if>
+      <if test="shopscole != null" >
+        #{shopscole,jdbcType=DOUBLE},
+      </if>
+      <if test="lifescole != null" >
+        #{lifescole,jdbcType=DOUBLE},
+      </if>
+      <if test="entertainmentscole != null" >
+        #{entertainmentscole,jdbcType=DOUBLE},
+      </if>
+      <if test="financescole != null" >
+        #{financescole,jdbcType=DOUBLE},
+      </if>
+      <if test="servicescole != null" >
+        #{servicescole,jdbcType=DOUBLE},
+      </if>
+      <if test="environmentscole != null" >
+        #{environmentscole,jdbcType=DOUBLE},
+      </if>
+      <if test="locationscole != null" >
+        #{locationscole,jdbcType=DOUBLE},
+      </if>
+      <if test="totalscole != null" >
+        #{totalscole,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -214,11 +352,68 @@
       <if test="record.decoration != null" >
         decoration = #{record.decoration,jdbcType=VARCHAR},
       </if>
+      <if test="record.x != null" >
+        x = #{record.x,jdbcType=DOUBLE},
+      </if>
+      <if test="record.y != null" >
+        y = #{record.y,jdbcType=DOUBLE},
+      </if>
       <if test="record.lat != null" >
         lat = #{record.lat,jdbcType=DOUBLE},
       </if>
       <if test="record.lon != null" >
         lon = #{record.lon,jdbcType=DOUBLE},
+      </if>
+      <if test="record.priceper != null" >
+        priceper = #{record.priceper,jdbcType=DOUBLE},
+      </if>
+      <if test="record.pricescole != null" >
+        pricescole = #{record.pricescole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.decorationscole != null" >
+        decorationscole = #{record.decorationscole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.heightscole != null" >
+        heightscole = #{record.heightscole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.directionscole != null" >
+        directionscole = #{record.directionscole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.housescole != null" >
+        housescole = #{record.housescole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.transportscole != null" >
+        transportscole = #{record.transportscole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.educationscole != null" >
+        educationscole = #{record.educationscole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.treatmentscole != null" >
+        treatmentscole = #{record.treatmentscole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.shopscole != null" >
+        shopscole = #{record.shopscole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lifescole != null" >
+        lifescole = #{record.lifescole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.entertainmentscole != null" >
+        entertainmentscole = #{record.entertainmentscole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.financescole != null" >
+        financescole = #{record.financescole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.servicescole != null" >
+        servicescole = #{record.servicescole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.environmentscole != null" >
+        environmentscole = #{record.environmentscole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.locationscole != null" >
+        locationscole = #{record.locationscole,jdbcType=DOUBLE},
+      </if>
+      <if test="record.totalscole != null" >
+        totalscole = #{record.totalscole,jdbcType=DOUBLE},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -235,57 +430,30 @@
       hpart = #{record.hpart,jdbcType=VARCHAR},
       direction = #{record.direction,jdbcType=VARCHAR},
       decoration = #{record.decoration,jdbcType=VARCHAR},
+      x = #{record.x,jdbcType=DOUBLE},
+      y = #{record.y,jdbcType=DOUBLE},
       lat = #{record.lat,jdbcType=DOUBLE},
-      lon = #{record.lon,jdbcType=DOUBLE}
+      lon = #{record.lon,jdbcType=DOUBLE},
+      priceper = #{record.priceper,jdbcType=DOUBLE},
+      pricescole = #{record.pricescole,jdbcType=DOUBLE},
+      decorationscole = #{record.decorationscole,jdbcType=DOUBLE},
+      heightscole = #{record.heightscole,jdbcType=DOUBLE},
+      directionscole = #{record.directionscole,jdbcType=DOUBLE},
+      housescole = #{record.housescole,jdbcType=DOUBLE},
+      transportscole = #{record.transportscole,jdbcType=DOUBLE},
+      educationscole = #{record.educationscole,jdbcType=DOUBLE},
+      treatmentscole = #{record.treatmentscole,jdbcType=DOUBLE},
+      shopscole = #{record.shopscole,jdbcType=DOUBLE},
+      lifescole = #{record.lifescole,jdbcType=DOUBLE},
+      entertainmentscole = #{record.entertainmentscole,jdbcType=DOUBLE},
+      financescole = #{record.financescole,jdbcType=DOUBLE},
+      servicescole = #{record.servicescole,jdbcType=DOUBLE},
+      environmentscole = #{record.environmentscole,jdbcType=DOUBLE},
+      locationscole = #{record.locationscole,jdbcType=DOUBLE},
+      totalscole = #{record.totalscole,jdbcType=DOUBLE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.rentingvis.po.HouseTotal" >
-    update house_total
-    <set >
-      <if test="commname != null" >
-        commname = #{commname,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
-        price = #{price,jdbcType=DOUBLE},
-      </if>
-      <if test="structure != null" >
-        structure = #{structure,jdbcType=VARCHAR},
-      </if>
-      <if test="area != null" >
-        area = #{area,jdbcType=DOUBLE},
-      </if>
-      <if test="hpart != null" >
-        hpart = #{hpart,jdbcType=VARCHAR},
-      </if>
-      <if test="direction != null" >
-        direction = #{direction,jdbcType=VARCHAR},
-      </if>
-      <if test="decoration != null" >
-        decoration = #{decoration,jdbcType=VARCHAR},
-      </if>
-      <if test="lat != null" >
-        lat = #{lat,jdbcType=DOUBLE},
-      </if>
-      <if test="lon != null" >
-        lon = #{lon,jdbcType=DOUBLE},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.rentingvis.po.HouseTotal" >
-    update house_total
-    set commname = #{commname,jdbcType=VARCHAR},
-      price = #{price,jdbcType=DOUBLE},
-      structure = #{structure,jdbcType=VARCHAR},
-      area = #{area,jdbcType=DOUBLE},
-      hpart = #{hpart,jdbcType=VARCHAR},
-      direction = #{direction,jdbcType=VARCHAR},
-      decoration = #{decoration,jdbcType=VARCHAR},
-      lat = #{lat,jdbcType=DOUBLE},
-      lon = #{lon,jdbcType=DOUBLE}
-    where id = #{id,jdbcType=INTEGER}
   </update>
 
   <select id="polygonHouseQuery" resultMap="BaseResultMap" parameterType="java.lang.Double">
