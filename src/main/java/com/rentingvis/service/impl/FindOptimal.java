@@ -36,12 +36,12 @@ public class FindOptimal {
 		int q[] = new int[n + 1];
 		int vis[] = new int[n + 1];
 		for (int i = 1; i <= n; ++i)
-			dist[i] = 1e8;
+			dist[i] = 1e18;
 		int f = 0, r = 0, x, closestPoint = findClosestRoadIntersections(S);
 		dist[closestPoint] = S.distToPoint(roadKeyPoint[closestPoint]);
 		q[++r] = closestPoint;
 		
-		while (f != r) {
+		while ( f != r ) {
 			f = f + 1;
 			if (f == n + 1) f = 1;
 			x = q[f];
@@ -131,7 +131,8 @@ public class FindOptimal {
 			@Override
 			public int compare(Integer a, Integer b) {
 				if (houseDist[a] < houseDist[b]) return -1;
-				else return 1;
+				else if (houseDist[a] > houseDist[b]) return 1;
+				else return 0;
 			}
 		});
 		

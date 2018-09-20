@@ -1,0 +1,26 @@
+hr.splitter {
+  display: none;
+}
+
+hr.splitter-toggle{
+  display: block;
+}
+
+div.radar {
+  margin-top: 10px;
+  padding-top: 5px;
+  border-top: 1px solid #ccc;
+  display: none;
+}
+
+div.radar-toggle {
+  display: block;
+}
+
+div.comment {
+  display: none;
+}
+
+div.comment-toggle {
+  display: block;
+}

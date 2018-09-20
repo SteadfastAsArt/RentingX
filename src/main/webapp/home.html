@@ -13,18 +13,22 @@
   <link rel="stylesheet" href="https://js.arcgis.com/3.25/esri/css/esri.css">
   <!-- 自定义样式 -->
   <link rel="stylesheet" href="./css/map.css">
+  <link rel="stylesheet" href="./css/info.css">
   <!-- 复选框样式 -->
   <link rel="stylesheet" href="./css/jquery-labelauty.css">
   <style>
     .dowebok ul { list-style-type: none; }
     .dowebok li { display: inline-block; }
-    .dowebok li { margin: 5px 0; }
-    input.labelauty + label { font: 15px "Microsoft Yahei";}
+    .dowebok li { margin: 0px 0; }
+    input.labelauty + label { font: 12px "Microsoft Yahei";}
   </style>
-
-
+  <!--优先级拖动样式-->
+  <link href='./css/jquery.gridly.css' rel='stylesheet' type='text/css'>
+  <link href='./css/sample.css' rel='stylesheet' type='text/css'>
+  
   <!-- ArcGIS -->
   <script src="https://js.arcgis.com/3.25/"></script>
+  
 
   <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
   <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
@@ -71,9 +75,9 @@
 
           <!-- panel-control-buttons -->
           <div class="btn-group navbar-right" role="group">
-            <button type="button" class="btn btn-default navbar-btn" title="用户登录" id="btn-user">
-              <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-            </button>
+			<button type="button" class="btn btn-default navbar-btn" title="扩展功能" id="btn-exts">
+			  <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+			</button>
             <button type="button" class="btn btn-default navbar-btn" title="快速设置" id="btn-qcog">
               <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
             </button>
@@ -106,57 +110,98 @@
         </div>
       </div>
     </div><!-- /.view -->
-
-    <div class="qcog">
-      <div class="qcog-wrapper">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4>快速设置(覆盖<a href="#">全局默认设置</a>)</h4>
+	
+	<div class="exts">
+        <div class="exts-wrapper">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>基于ArcGIS API的扩展功能</h4>
+            </div>
+            <div class="panel-body">
+            </div>
           </div>
-          <div class="panel-body">
-            <p class="hint">提示:</p>
-            <p>在下面, 您可以针对租房信息对它们进行筛选, 如果下拉框里的选项不能满足您的需求, 您可以尝试自己手动输入, 例如您想要朝向东或南的租房, 您可以在第一个输入框中输入"<span
-                    class="special">东 南</span>", 我们会尽力识别它们. 当然, 我们也为您提供了一些有趣的<span
-                    class="special">预设方案</span>.</p>
+        </div><!-- /.exts-wrapper -->
+    </div><!-- /.exts -->
+	
+	<div class="qcog">
+        <div class="qcog-wrapper">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4>快速设置(覆盖<a href="#">全局默认设置</a>)</h4>
+            </div>
+            <div class="panel-body">
+              <p class="hint">兴趣点筛选:</p>
+              <p>在下面, 您可以选择你希望显示的<span class="special">兴趣点</span>类型. 我们先帮您选中了<span class="special">美食</span>, 相信您会感兴趣^_^.</p>
+              <div class="btn-group btn-group-justified first-row" role="group" aria-label="..." class="poi">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-info display-poi" title="当前: 已选中" id="food">美食</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-default display-poi" title="当前: 未选中" id="shopping">购物</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-default display-poi" title="当前: 未选中" id="shops">商铺</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-default display-poi" title="当前: 未选中" id="entertainment">娱乐</button>
+                </div>
+              </div>
+              <div class="btn-group btn-group-justified second-row" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-default display-poi" title="当前: 未选中" id="education">教育</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-default display-poi" title="当前: 未选中" id="enterprise">企业</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-default display-poi" title="当前: 未选中" id="finance">金融</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-default display-poi" title="当前: 未选中" id="life">生活</button>
+                </div>
+              </div>
+              <hr />
+              <p class="hint">租房筛选:</p>
+              <p>在下面, 您可以针对租房信息对它们进行筛选, 如果下拉框里的选项不能满足您的需求, 您可以尝试自己手动输入, 例如您想要朝向东或南的租房, 您可以在第一个输入框中输入"<span class="special">东 南</span>", 我们会尽力识别它们.</p>
               <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">朝向</span>
                 <input type="text" class="form-control" aria-label="..." placeholder="保持默认" id="direction">
                 <div class="input-group-btn">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                          aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <li><a href="#">全部</a></li>
-                    <li id="south"><a href="#">南</a></li>
+                    <li><a href="#">东</a></li>
+                    <li><a href="#">南</a></li>
+                    <li><a href="#">西</a></li>
                     <li><a href="#">北</a></li>
-                    <li><a href="#">? ? ?</a></li>
                   </ul>
                 </div><!-- /btn-group -->
               </div><!-- /input-group -->
               <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">价格</span>
-                <input type="text" class="form-control" aria-label="..." placeholder="保持默认">
+                <input type="text" class="form-control" aria-label="..." placeholder="保持默认" id="price">
                 <div class="input-group-btn">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                          aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="glyphicon glyphicon-yen" aria-hidden="true"></span>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <li><a href="#">全部</a></li>
                     <li><a href="#">~1000</a></li>
                     <li><a href="#">1000~2000</a></li>
-                    <li><a href="#">2000~</a></li>
-                    <li><a href="#">?~? ?~? ?~?</a></li>
+                    <li><a href="#">2000~3000</a></li>
+                    <li><a href="#">3000~4000</a></li>
+                    <li><a href="#">4000~5000</a></li>
+                    <li><a href="#">5000~</a></li>
                   </ul>
                 </div><!-- /btn-group -->
               </div><!-- /input-group -->
               <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">楼层</span>
-                <input type="text" class="form-control" aria-label="..." placeholder="保持默认">
+                <input type="text" class="form-control" aria-label="..." placeholder="保持默认" id="floor">
                 <div class="input-group-btn">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                          aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-right">
@@ -164,16 +209,14 @@
                     <li><a href="#">低</a></li>
                     <li><a href="#">中</a></li>
                     <li><a href="#">高</a></li>
-                    <li><a href="#">? ? ?</a></li>
                   </ul>
                 </div><!-- /btn-group -->
               </div><!-- /input-group -->
               <div class="input-group">
                 <span class="input-group-addon" id="sizing-addon1">结构</span>
-                <input type="text" class="form-control" aria-label="..." placeholder="保持默认">
+                <input type="text" class="form-control" aria-label="..." placeholder="保持默认" id="struct">
                 <div class="input-group-btn">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                          aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-right">
@@ -181,7 +224,21 @@
                     <li><a href="#">1室1厅1卫</a></li>
                     <li><a href="#">2室1厅1卫</a></li>
                     <li><a href="#">3室2厅2卫</a></li>
-                    <li><a href="#">?室?厅?卫 ?室?厅?卫 ?室?厅?卫</a></li>
+                  </ul>
+                </div><!-- /btn-group -->
+              </div><!-- /input-group -->
+              <div class="input-group">
+                <span class="input-group-addon" id="sizing-addon1">面积</span>
+                <input type="text" class="form-control" aria-label="..." placeholder="保持默认" id="area">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphicon glyphicon-move" aria-hidden="true"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#">全部</a></li>
+                    <li><a href="#">~40</a></li>
+                    <li><a href="#">40~80</a></li>
+                    <li><a href="#">80~</a></li>
                   </ul>
                 </div><!-- /btn-group -->
               </div><!-- /input-group -->
@@ -189,11 +246,10 @@
                 <span class="input-group-addon" id="sizing-addon1">预设</span>
                 <input type="text" disabled class="form-control" aria-label="..." placeholder="禁用预设">
                 <div class="input-group-btn">
-                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
-                          aria-haspopup="true" aria-expanded="false">
+                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
                   </button>
-                  <ul class="dropdown-menu dropdown-menu-right">
+                  <ul class="dropdown-menu dropdown-menu-right" id="preinstall">
                     <li><a href="#">预设一</a></li>
                     <li><a href="#">预设二</a></li>
                     <li><a href="#">预设三</a></li>
@@ -201,6 +257,52 @@
                   </ul>
                 </div><!-- /btn-group -->
               </div><!-- /input-group -->
+			  
+			  
+              <hr />
+              <h5>POI标签选择</h5>
+              <ul class="dowebok">
+                <li><input type="checkbox" name="checkbox" data-labelauty="购物" id="aa"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="美食"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="商铺"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="娱乐"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="生活服务"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="公司"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="教育"></li>
+                <li><input type="checkbox" name="checkbox" data-labelauty="金融"></li>
+              </ul>
+              <hr>
+              <p>是否选用个性化推荐（筛选）？</p>
+              <input type="radio" name="recoSel" checked="true" id="notuijian" class="radCheck" data-labelauty="不进行推荐">
+              <input type="radio" name="recoSel" id="moren" class="radCheck" data-labelauty="选用默认推荐">
+              <input type="radio" name="recoSel" id="gexing" class="radCheck" data-labelauty="选用个性化推荐">
+              <hr>
+              <div class="youxian">
+                <h5>优先条件</h5>
+                <p>说明：拖拽条形颜色框以实现排序，从高到低重要性依次递减。</p>
+				
+                <h6>区位因素优先度</h6>
+                <section class='example'>
+                  <div class='gridly'>
+                    <div class='brick small' id="transportScole">交通便捷性</div>
+                    <div class='brick small' id="serviceScole">服务设施密集性</div>
+                    <div class='brick small' id="environmentScole">环境优劣</div>
+                  </div>
+                </section>
+                <h6>服务设施优先度</h6>
+                <section class='example'>
+                  <div class='gridly'>
+                    <div class='brick small' id="educationScole">教育机构</div>
+                    <div class='brick small' id="treatmentScole">医疗保健机构</div>
+                    <div class='brick small' id="shopScole">购物机构</div>
+                    <div class='brick small' id="lifeScole">生活服务设施</div>
+                    <div class='brick small' id="entertainmentScole">娱乐健身设施</div>
+                    <div class='brick small' id="financeScole">金融机构</div>
+                  </div>
+                </section>
+                <hr>
+              </div>
+
               <div class="btn-group btn-group-justified" role="group" aria-label="...">
                 <div class="btn-group" role="group">
                   <button type="button" class="btn btn-danger" title="关闭快速设置" id="btn-qcog-cancel">
@@ -212,46 +314,128 @@
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                   </button>
                 </div>
-
               </div>
-          </div><!-- /.panel-body -->
-        </div><!-- /.panel -->
-      </div><!-- /.qcog-wrapper -->
+            </div><!-- /.panel-body -->
+          </div><!-- /.panel -->
+        </div><!-- /.qcog-wrapper -->
     </div><!-- /.qcog -->
-    <div class="star">
+	
+	<div class="star">
       <div class="star-wrapper">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4>查看推荐</h4>
           </div>
-          <div class="panel-body">
-            POI标签选择
-            <div class="poi-tag">
-              <ul class="dowebok">
-                <li><input type="checkbox" name="checkbox" data-labelauty="购物"></li>
-                <li><input type="checkbox" name="checkbox" data-labelauty="美食"></li>
-                <li><input type="checkbox" name="checkbox" data-labelauty="娱乐"></li>
-                <li><input type="checkbox" name="checkbox" data-labelauty="生活服务"></li>
-                <li><input type="checkbox" name="checkbox" data-labelauty="公司"></li>
-                <li><input type="checkbox" name="checkbox" data-labelauty="教育"></li>
-                <li><input type="checkbox" name="checkbox" data-labelauty="金融"></li>
-              </ul>
+		  <div class="panel-body">
+              <p class="hint">租房推荐:</p>
+              <p>以下是我们根据您的条件筛选得到的租房以及其评价, 您可以点击它们以查看更详细的信息.</p>
+              <p id="no-solution-hint">无相应推荐，请重新设定条件。</p>
             </div>
-            <hr>
-
-
-          </div>
+            <!-- List group -->
+            <div class="list-group">
+              <a href="#" class="list-group-item">
+                <span class="badge" id="scole0">67.96</span>
+                <h4 class="list-group-item-heading" id="heading0">金地德圣中心</h4>
+                <p class="list-group-item-text" id="detail0">
+                  价格: 3300元/月, 住房结构: 1室1厅1卫, 装潢程度: 未知, 房屋朝向: 南, 楼层高度: 中.
+                </p>
+                <div class="radar radar-toggle" id="radar0">这里是租房雷达图的div.</div>
+                <div class="comment comment-toggle" id="comment0">这里是评论的div.</div>
+              </a>
+              <a href="#" class="list-group-item">
+                <span class="badge" id="scole1">73</span>
+                <h4 class="list-group-item-heading" id="heading1">耀江文鼎苑</h4>
+                <p class="list-group-item-text" id="detail1">
+                  价格: 10000/月, 住房结构: 4室2厅1卫, 装潢程度: 未知, 房屋朝向: 南, 楼层高度: 低.
+                </p>
+                <div class="radar" id="radar1">这里是租房雷达图的div.</div>
+                <div class="comment" id="comment1">这里是评论的div.</div>
+              </a>
+              <a href="#" class="list-group-item">
+                <span class="badge" id="scole2">81.05</span>
+                <h4 class="list-group-item-heading" id="heading2">御跸苑</h4>
+                <p class="list-group-item-text" id="detail2">
+                  价格: 7600元/月, 住房结构: 3室1厅2卫, 装潢程度: 未知, 房屋朝向: 南 北, 楼层高度: 高.
+                </p>
+                <div class="radar" id="radar2">这里是租房雷达图的div.</div>
+                <div class="comment" id="comment2">这里是评论的div.</div>
+              </a>
+              <a href="#" class="list-group-item">
+                <span class="badge" id="scole3">73</span>
+                <h4 class="list-group-item-heading" id="heading3">耀江文鼎苑</h4>
+                <p class="list-group-item-text" id="detail3">
+                  价格: 10000/月, 住房结构: 4室2厅1卫, 装潢程度: 未知, 房屋朝向: 南, 楼层高度: 低.
+                </p>
+                <div class="radar" id="radar3">这里是租房雷达图的div.</div>
+                <div class="comment" id="comment3">这里是评论的div.</div>
+              </a>
+              <a href="#" class="list-group-item">
+                <span class="badge" id="scole4">73</span>
+                <h4 class="list-group-item-heading" id="heading4">耀江文鼎苑</h4>
+                <p class="list-group-item-text" id="detail4">
+                  价格: 10000/月, 住房结构: 4室2厅1卫, 装潢程度: 未知, 房屋朝向: 南, 楼层高度: 低.
+                </p>
+                <div class="radar" id="radar4">这里是租房雷达图的div.</div>
+                <div class="comment" id="comment4">这里是评论的div.</div>
+              </a>
+              <a href="#" class="list-group-item">
+                <span class="badge" id="scole5">73</span>
+                <h4 class="list-group-item-heading" id="heading5">耀江文鼎苑</h4>
+                <p class="list-group-item-text" id="detail5">
+                  价格: 10000/月, 住房结构: 4室2厅1卫, 装潢程度: 未知, 房屋朝向: 南, 楼层高度: 低.
+                </p>
+                <div class="radar" id="radar5">这里是租房雷达图的div.</div>
+                <div class="comment" id="comment5">这里是评论的div.</div>
+              </a>
+              <a href="#" class="list-group-item">
+                <span class="badge" id="scole6">73</span>
+                <h4 class="list-group-item-heading" id="heading6">耀江文鼎苑</h4>
+                <p class="list-group-item-text" id="detail6">
+                  价格: 10000/月, 住房结构: 4室2厅1卫, 装潢程度: 未知, 房屋朝向: 南, 楼层高度: 低.
+                </p>
+                <div class="radar" id="radar6">这里是租房雷达图的div.</div>
+                <div class="comment" id="comment6">这里是评论的div.</div>
+              </a>
+              <a href="#" class="list-group-item">
+                <span class="badge" id="scole7">73</span>
+                <h4 class="list-group-item-heading" id="heading7">耀江文鼎苑</h4>
+                <p class="list-group-item-text" id="detail7">
+                  价格: 10000/月, 住房结构: 4室2厅1卫, 装潢程度: 未知, 房屋朝向: 南, 楼层高度: 低.
+                </p>
+                <div class="radar" id="radar7">这里是租房雷达图的div.</div>
+                <div class="comment" id="comment7">这里是评论的div.</div>
+              </a>
+            </div> <!-- List group -->
+			
+			<div class="panel-body">
+              <p id="page-hint" style="text-align: center;"></p>
+              <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-success" id="first-page">首页</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-default" id="previous-page">上一页</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-default" id="next-page">下一页</button>
+                </div>
+                <div class="btn-group" role="group">
+                  <button type="button" class="btn btn-success" id="last-page">尾页</button>
+                </div>
+              </div>
+            </div>
+			
         </div>
       </div><!-- /.star-wrapper -->
     </div><!-- /.star -->
 
   </div><!-- /.main -->
+  
   <div class="footer">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <p class="navbar-text">
-          Copyright © 2018 <a href="#" class="navbar-link">An Esri-WebGIS-Contest Group</a> From <a
-                href="http://www.zju.edu.cn/" target="_blank" class="navbar-link">ZJU</a>. All Rights Reserved.
+          Copyright © 2018 <a href="#" class="navbar-link">An Esri-WebGIS-Contest Group</a> From <a href="http://www.zju.edu.cn/" target="_blank" class="navbar-link">ZJU</a>. All Rights Reserved.
         </p>
       </div><!-- /.container-fluid -->
     </nav>
@@ -259,10 +443,18 @@
 </div><!-- /.wrapper -->
 </body>
 
+
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="./js/motion.js"></script>
+<script src="./js/info.js"></script>
+<script src="./js/bind-select.js"></script>
+
+<script src="./js/jquery.gridly.js"></script>
+<script src="./js/sample.js"></script>
 
 <script src="./js/jquery-labelauty.js"></script>
 <script>
@@ -271,12 +463,14 @@
     });
 </script>
 
+<!-- ArcGIS relevant APIs -->
 <script src="./js/map/map-init.js"></script>
 <script src="./js/map/pointRender.js"></script>
 
 <script src="./js/attributeQuery.js"></script>
+<script src="./js/houseReco.js"></script>
 <script src="./js/spatialQuery.js"></script>
 <script src="./js/pickPlaceOptimal.js"></script>
-<script src="./js/motion.js"></script>
+
 
 </html>

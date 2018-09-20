@@ -1,97 +1,150 @@
-html, body, div.wrapper {
-    height: 100%;
+/* 以下样式用于页面布局. */
+html,
+body,
+div.wrapper {
+  height: 100%;
 }
 
 div.wrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-div.header, div.footer {
-    flex: 0 0 auto;
+div.header,
+div.footer {
+  flex: 0 0 auto;
 }
 
 div.main {
-    display: flex;
-    flex: 1 1 auto;
+  display: flex;
+  flex: 1 1 auto;
 }
 
 div.view {
-    flex: 1 1 100%; /* flex: flex-grow flex-shrink flex-basis */
+  flex: 1 1 100%;
+  /* flex: flex-grow flex-shrink flex-basis */
 }
 
 div.qcog {
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 0;
-    transition: all 500ms;
-    overflow: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 0;
+  transition: all 500ms;
+  overflow: auto;
 }
 
 div.qcog-wrapper {
-    flex: 1 1 auto;
-    width: 300px;
+  flex: 1 1 auto;
+  width: 360px;
 }
 
 div.star {
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 0;
-    transition: all 500ms;
-    overflow: auto;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 0;
+  transition: all 500ms;
+  overflow: auto;
 }
 
 div.star-wrapper {
-    flex: 1 1 auto;
-    width: 300px;
+  flex: 1 1 auto;
+  width: 360px;
 }
 
-div.view-toggle {
+div.exts {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 0;
+  transition: all 500ms;
+  overflow: auto;
+}
+
+div.exts-wrapper {
+  flex: 1 1 auto;
+  width: 360px;
 }
 
 div.qcog-toggle {
-    flex: 0 0 300px;
+  flex: 0 0 360px;
 }
 
 div.star-toggle {
-    flex: 0 0 300px;
+  flex: 0 0 360px;
 }
 
-div.header nav, div.footer nav {
-    margin-bottom: 0;
-    border-radius: 0;
+div.exts-toggle {
+  flex: 0 0 360px;
+}
+
+ul.dowebok {
+  padding-left: 0;
+}
+
+/* 以下样式用于微调美化. */
+div.header nav,
+div.footer nav {
+  margin-bottom: 0;
+  border-radius: 0;
 }
 
 div.header nav button.navbar-toggle {
-    margin: 8px 16px;
+  margin: 8px 16px;
 }
 
 div.footer nav p.navbar-text {
-    float: none;
-    text-align: center;
+  float: none;
+  text-align: center;
 }
 
 div.footer nav p.navbar-text a.navbar-link {
-    color: rgb(0, 63, 136); /* 浙大求是蓝 */
+  color: rgb(0, 63, 136);
+  /* 浙大求是蓝 */
 }
 
 div.main div.qcog div.input-group {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 p.hint {
-    margin-bottom: 5px;
-    font-size: 1.2em;
-    font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 span.special {
-    font-weight: bold;
-    color: red;
+  font-weight: bold;
+  color: red;
 }
 
+div.panel-body {
+  padding-right: 25px;
+}
+
+.first-row > .btn-group:first-child:not(:last-child) > .btn:last-child {
+  border-bottom-left-radius: 0;
+}
+.first-row>.btn-group:last-child:not(:first-child)>.btn:first-child {
+  border-bottom-right-radius: 0;
+}
+.second-row {
+  margin-top: -1px;
+}
+.second-row > .btn-group:first-child:not(:last-child) > .btn:last-child {
+  border-top-left-radius: 0;
+}
+.second-row>.btn-group:last-child:not(:first-child)>.btn:first-child {
+  border-top-right-radius: 0;
+}
+
+
 #draw {
-    position:absolute;
-    left:20px;
-    bottom:10%
+  position: absolute;
+  left: 20px;
+  bottom: 10%
+}
+
+#heat {
+  position: absolute;
+  left: 20px;
+  top: 20%;
 }
