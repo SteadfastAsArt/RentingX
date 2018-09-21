@@ -57,16 +57,20 @@ function pageInit() {
         comment = document.getElementById(commentID);
         comment.innerHTML = "";
     }
-    if(remJSON.length == 0)
+    if(remJSON.length == 0){
+        $('.house-slot').css('display', 'none');
         return;
+    }
+
     $('.house-slot').css('display', 'block');
     $('.house-slot').each(function(){
         var thisSlot = $(this);
         thisSlot.find('.comment').removeClass('comment-toggle');
         thisSlot.find('.radar').removeClass('radar-toggle');
     });
-    if(Math.ceil(remJSON.length/8) == pageNum){
-        console.log('last page...');
+    if(remJSON.length%8 == 0){
+        return;
+    } else if(Math.ceil(remJSON.length/8) == pageNum){
         $('.house-slot').css('display', 'none');
         for(var i = 1; i <= remJSON.length%8; i++){
             $('.house-slots').find('.house-slot:nth-child(' + i + ')').css('display', 'block');
@@ -120,6 +124,7 @@ function firstPage() {
 $(document).ready(function () {
     $("#previous-page").click(function () {
         if (remJSON == null) return;
+        if (remJSON.length == 0) return;
         if (pageNum == 1){
             alert("警告：已经是第一页了。");
         }
@@ -160,6 +165,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#next-page").click(function () {
         if (remJSON == null) return;
+        if (remJSON.length == 0) return;
         if (pageNum == Math.ceil(Object.keys(remJSON).length/8)){
             alert("警告：已经是最后一页了。");
         }
@@ -200,6 +206,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#last-page").click(function () {
         if (remJSON == null) return;
+        if (remJSON.length == 0) return;
         pageNum = Math.ceil(Object.keys(remJSON).length/8);
         var hint2 = document.getElementById('page-hint');
         hint2.innerHTML = "第" + pageNum + "页 共" + Math.ceil(Object.keys(remJSON).length/8) + "页";

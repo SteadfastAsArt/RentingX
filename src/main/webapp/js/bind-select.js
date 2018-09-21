@@ -45,6 +45,7 @@
               otherGroup.find('button').removeAttr('disabled');
               otherInputs.removeAttr('disabled');
               li.parent().find('li:eq(0)').remove();
+              otherInputs.val('');
             });
           }
           input.val(select);
