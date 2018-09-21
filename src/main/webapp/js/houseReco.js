@@ -51,8 +51,8 @@ require( [
               map.graphics.clear();
               houseRecoLayer.clear();
               for (i in json) {
-                  var content = "Price: " + json[i].price + "<br>Structure: " + json[i].structure;
-                  content += "<br>Area(m^2): " + json[i].area;
+                  var content = "价格: " + json[i].price + "<br>房屋结构: " + json[i].structure;
+                  content += "<br>面积(平方米): " + json[i].area;
                   var infoTemplate = new InfoTemplate(json[i].commname, content);
                   if (json[i].price < 1000) {
                     var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol1);
@@ -191,6 +191,7 @@ $(document).ready(function () {
                 houseRecommendRenderer(result);
                 firstPageInit();
                 detailsRender();
+                $('#btn-star').click();
             },
             error: function () {
                 alert("Error!");

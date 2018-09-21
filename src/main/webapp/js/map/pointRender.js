@@ -21,8 +21,8 @@ require( [
 
         for (i in json) {
             var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol);
-            var content = "Address: " + json[i].address;
-            content += "<br>Tel: " + json[i].tel;
+            var content = "地址: " + json[i].address;
+            content += "<br>联系电话: " + json[i].tel;
             var infoTemplate = new InfoTemplate(json[i].name, content);
             graphic.setInfoTemplate(infoTemplate);
             poiLayer.add(graphic);
@@ -35,18 +35,18 @@ require( [
         markerSymbol.setColor(new Color("#FF33FF"));
         markerSymbol.setSize(10);
 
-        map.graphics.clear();
+        houseBasic.clear();
 
         for (i in json) {
             var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol);
-            var content = "Area: " + json[i].area;
-            content += "<br>Price: " + json[i].price;
-            content += "<br>Structure: " + json[i].structure;
+            var content = "面积(平方米): " + json[i].area;
+            content += "<br>价格: " + json[i].price;
+            content += "<br>房屋结构: " + json[i].structure;
 
             var infoTemplate = new InfoTemplate(json[i].commname, content);
             graphic.setInfoTemplate(infoTemplate);
             //map.graphics.add(graphic);
-           tmp.add(graphic)
+            houseBasic.add(graphic)
         }
     }
     houseQueryRenderer = houseQueryRender;

@@ -18,6 +18,8 @@ jQuery(function () {
                 houseQueryRenderer(result);
                 firstPageInit();
                 detailsRender();
+                if(starClosed)
+                    $('#btn-star').click();
             },
             error: function () {
                 alert("异常！");
@@ -89,6 +91,7 @@ require([
                 symbol = fillSymbol;
                 map.graphics.clear();
                 polygonLayer.clear();
+                poiRangeLayer.clear();
                 polygonLayer.add(new Graphic(geo, symbol));
                 envelope = [];
                 envelope.push(geo.xmin, geo.ymin, geo.xmax, geo.ymax);
@@ -99,7 +102,23 @@ require([
 
         //图形点击事件
         function graphic_click(){
-            map.graphics.on("click", function (evt) {
+            houseBasic.on("click", function (evt) {
+                clickHouse = true;
+                selectedHouse = [];
+                selectedHouse.push(evt.graphic.geometry.x, evt.graphic.geometry.y);
+                var symbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
+                var circle = new Circle({
+                    center: evt.graphic.geometry,
+                    geodesic: true,
+                    radius: 500
+                });
+                var graphic = new Graphic(circle, symbol);
+                poiLayer.clear();
+                poiRangeLayer.clear();
+                poiRangeLayer.add(graphic);
+            });
+
+            detailLayer.on("click", function (evt) {
                 clickHouse = true;
                 selectedHouse = [];
                 selectedHouse.push(evt.graphic.geometry.x, evt.graphic.geometry.y);

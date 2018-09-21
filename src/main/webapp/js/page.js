@@ -18,14 +18,15 @@ require( [
             Color, InfoTemplate,
             dom, on
 ) {
+    //高亮
     function detailRender() {
         var markerSymbol = new SimpleMarkerSymbol();
         markerSymbol.setColor(new Color("#58faff"));
         markerSymbol.setSize(12);
         detailLayer.clear();
         for (var i = 8*pageNum-8; i < 8*pageNum && i < Object.keys(remJSON).length; i++){
-            var content = "Price: " + remJSON[i].price + "<br>Structure: " + remJSON[i].structure;
-            content += "<br>Area(m^2): " + remJSON[i].area;
+            var content = "价格: " + remJSON[i].price + "<br>房屋结构: " + remJSON[i].structure;
+            content += "<br>面积(平方米): " + remJSON[i].area;
             var infoTemplate = new InfoTemplate(remJSON[i].commname, content);
             var graphic = new Graphic(new Point(remJSON[i].lon, remJSON[i].lat), markerSymbol);
             graphic.setInfoTemplate(infoTemplate);
@@ -56,6 +57,8 @@ function pageInit() {
         comment = document.getElementById(commentID);
         comment.innerHTML = "";
     }
+    if(remJSON.length == 0)
+        return;
     $('.house-slot').css('display', 'block');
     $('.house-slot').each(function(){
         var thisSlot = $(this);
@@ -152,7 +155,7 @@ $(document).ready(function () {
             detailsRender();
         }
     })
-})
+});
 
 $(document).ready(function () {
     $("#next-page").click(function () {
@@ -192,7 +195,7 @@ $(document).ready(function () {
             detailsRender();
         }
     })
-})
+});
 
 $(document).ready(function () {
     $("#last-page").click(function () {
@@ -227,4 +230,4 @@ $(document).ready(function () {
         }
         detailsRender();
     })
-})
+});

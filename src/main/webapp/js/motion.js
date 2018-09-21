@@ -102,6 +102,7 @@ jQuery(function () {
     detailLayer.clear();
     houseRecoLayer.clear();
     poiLayer.clear();
+    houseBasic.clear();
   });
 
   //绘制多点

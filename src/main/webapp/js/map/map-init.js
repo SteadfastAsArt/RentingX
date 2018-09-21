@@ -8,7 +8,7 @@ var optimalLayer;
 var detailLayer;
 var houseRecoLayer;
 
-var tmp;
+var houseBasic;
 
 require(["esri/map", "esri/layers/GraphicsLayer", "esri/layers/FeatureLayer", "esri/layers/ArcGISDynamicMapServiceLayer", "dojo/dom", "dojo/on", "dojo/domReady!"],
     function( Map, GraphicsLayer, FeatureLayer, ArcGISDynamicMapServiceLayer, dom, on ) {
@@ -23,14 +23,14 @@ require(["esri/map", "esri/layers/GraphicsLayer", "esri/layers/FeatureLayer", "e
         optimalLayer = new GraphicsLayer({ id: "optimal" });
         houseRecoLayer = new GraphicsLayer({ id: "houseRecoLayer" });
         detailLayer = new GraphicsLayer({ id: "detailLayer" });
-        tmp = new GraphicsLayer({ id: "tmp" });
+        houseBasic = new GraphicsLayer({ id: "houseBasic" });
 
         map.addLayer(polygonLayer);
         map.addLayer(poiRangeLayer);
         map.addLayer(poiLayer);
         map.addLayer(optimalLayer);
         map.addLayer(houseRecoLayer);
-        map.addLayer(tmp);
+        map.addLayer(houseBasic);
         map.addLayer(detailLayer);
 
 

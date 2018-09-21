@@ -13,7 +13,6 @@ $(function () {
     });
     $('#close-display-poi').click(function(){
         var thisButton = $(this);
-        console.log(thisButton.parents('div.panel'));
         thisButton.parents('div.panel').css('display', 'none');
     });
     $('button.btn-display-poi').each(function () {
