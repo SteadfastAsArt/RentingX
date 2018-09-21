@@ -92,7 +92,7 @@
                     thisInput.val('3室2厅2卫');
                     break;
                   case 'area':
-                    thisInput.val('~80');
+                    thisInput.val('120~1000');
                     break;
                   default:
                     break;
@@ -108,7 +108,7 @@
                     thisInput.val('全部');
                     break;
                   case 'price':
-                    thisInput.val('~1000');
+                    thisInput.val('0~1000');
                     break;
                   case 'floor':
                     thisInput.val('全部');
@@ -154,21 +154,5 @@
           } // switch(select)
         });
       } // if-else ul.attr('id') != 'preinstall'
-    });
-
-    var buttons = $('button.display-poi');
-    buttons.each(function () {
-      $(this).click(function () {
-        var thisButton = $(this);
-        if (thisButton.hasClass('btn-default')) {
-          thisButton.removeClass('btn-default');
-          thisButton.addClass('btn-info');
-          thisButton.attr('title', '当前: 已选中');
-        } else {
-          thisButton.removeClass('btn-info');
-          thisButton.addClass('btn-default');
-          thisButton.attr('title', '当前: 未选中');
-        } // if(thisButton.hasClass('btn-default'))
-      });
     });
   });

@@ -1,0 +1,43 @@
+.display-poi {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 240px;
+}
+
+.display-poi .panel-heading {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.display-poi .panel-body {
+    padding: 5px 10px;
+}
+
+.first-row > .btn-group:first-child:not(:last-child) > .btn:last-child {
+    border-bottom-left-radius: 0;
+}
+
+.first-row > .btn-group:last-child:not(:first-child) > .btn:first-child {
+    border-bottom-right-radius: 0;
+}
+
+.second-row {
+    margin-top: -1px;
+}
+
+.second-row > .btn-group:first-child:not(:last-child) > .btn:last-child {
+    border-top-left-radius: 0;
+}
+
+.second-row > .btn-group:last-child:not(:first-child) > .btn:first-child {
+    border-top-right-radius: 0;
+}
+
+/* 关闭按钮样式 */
+#close-display-poi {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}

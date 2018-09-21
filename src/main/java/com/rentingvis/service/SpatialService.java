@@ -7,5 +7,5 @@ import com.rentingvis.po.PoiHz;
 
 public interface SpatialService {
     List<HouseTotal> polygonQuery( Double[] coordinates );
-    List<PoiHz> poiQuery(  Integer[] tag_list, Double[] pHouse );
+    List<PoiHz> poiQuery(  String[] tag_list, Double[] pHouse );
 }

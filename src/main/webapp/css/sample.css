@@ -91,17 +91,17 @@ pre .string.value {
     .example .brick.dragging {
       opacity: 0.8; }
     .example .brick:nth-child(20n + 1) {
-      background: #1ABC9C; }
+      background: rgb(147, 224, 255); }
     .example .brick:nth-child(20n + 2) {
-      background: #16A085; }
+      background: rgb(249, 205, 173); }
     .example .brick:nth-child(20n + 3) {
-      background: #2ECC71; }
+      background: rgb(255, 66, 93); }
     .example .brick:nth-child(20n + 4) {
-      background: #27AE60; }
+      background: rgb(93, 167, 186); }
     .example .brick:nth-child(20n + 5) {
-      background: #3498DB; }
+      background: rgb(175, 215, 237); }
     .example .brick:nth-child(20n + 6) {
-      background: #2980B9; }
+      background: rgb(199, 237, 233); }
     .example .brick:nth-child(20n + 7) {
       background: #9B59B6; }
     .example .brick:nth-child(20n + 8) {

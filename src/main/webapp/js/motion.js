@@ -85,6 +85,8 @@ jQuery(function () {
     }
   });
 
+
+
   //绘制多边形
   $("#drawpoly").click(function () {
     map.disableMapNavigation();
@@ -96,6 +98,17 @@ jQuery(function () {
     map.graphics.clear();
     polygonLayer.clear();
     poiRangeLayer.clear();
+    optimalLayer.clear();
+    detailLayer.clear();
+    houseRecoLayer.clear();
+    poiLayer.clear();
   });
+
+  //绘制多点
+  $("#pick").click(function () {
+      map.disableMapNavigation();
+      tb.activate("multipoint");
+  });
+
 
 });

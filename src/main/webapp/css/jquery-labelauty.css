@@ -75,7 +75,7 @@ input.labelauty + label > span.labelauty-checked-image
 input.labelauty + label > span.labelauty-unchecked-image + span.labelauty-unchecked,
 input.labelauty + label > span.labelauty-checked-image + span.labelauty-checked
 {
-	margin-left: 7px;
+	margin-left: 5px;
 }
 
 /* When not Checked */

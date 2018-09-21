@@ -14,7 +14,7 @@
 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
 
 	<!-- 定义相关的service -->
-	<bean id="attributeService" class="com.rentingvis.service.impl.AttributeServiceImp"></bean>
+	<bean id="houseRecoService" class="com.rentingvis.service.impl.HouseRecoServiceImpl"></bean>
 	<bean id="spatialService" class="com.rentingvis.service.impl.SpatialServiceImp"></bean>
 	<bean id="commentsService" class="com.rentingvis.service.impl.CommentsServiceImp"></bean>
 	<bean id="findOptimalService" class="com.rentingvis.service.impl.FindOptimalServiceImp"></bean>

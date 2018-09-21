@@ -27,7 +27,7 @@ public class SpatialController {
 
     @RequestMapping(value = "/poi", method = {RequestMethod.GET})
     @ResponseBody
-    public List<PoiHz> showPOI ( @RequestParam(value="tag_list")  Integer[] tag_list, @RequestParam(value="pHouse")  Double[] pHouse ) {
+    public List<PoiHz> showPOI ( @RequestParam(value="tag_list")  String[] tag_list, @RequestParam(value="pHouse")  Double[] pHouse ) {
         List<PoiHz> result = spatialService.poiQuery( tag_list, pHouse );
         return result;
     }

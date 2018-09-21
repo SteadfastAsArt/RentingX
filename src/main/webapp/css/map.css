@@ -120,31 +120,74 @@ div.panel-body {
   padding-right: 25px;
 }
 
-.first-row > .btn-group:first-child:not(:last-child) > .btn:last-child {
-  border-bottom-left-radius: 0;
-}
-.first-row>.btn-group:last-child:not(:first-child)>.btn:first-child {
-  border-bottom-right-radius: 0;
-}
-.second-row {
-  margin-top: -1px;
-}
-.second-row > .btn-group:first-child:not(:last-child) > .btn:last-child {
-  border-top-left-radius: 0;
-}
-.second-row>.btn-group:last-child:not(:first-child)>.btn:first-child {
-  border-top-right-radius: 0;
+.primary-btn-group {
+  margin-top: 16px;
 }
 
+input.labelauty + label > span.labelauty-unchecked-image + span.labelauty-unchecked,
+input.labelauty + label > span.labelauty-checked-image + span.labelauty-checked {
+  margin-left: 5px;
+  margin-right: 12px;
+}
+
+#heat {
+  padding: 0 34px;
+}
+
+/* 个性化推荐区样式. */
+input.labelauty + label {
+  display: block !important;
+  text-align: center;
+}
+
+div.youxian {
+  display: none;
+}
+
+p.hint-small {
+  color: red;
+  font-weight: bold;
+}
+
+div.priority-title {
+  margin: 10px 0;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+section.example {
+  padding: 0 34px;
+}
+
+div.gridly {
+  position: relative;
+}
+
+.brick {
+  border-radius: 16px;
+  color: snow;
+  font-size: 100%
+}
+
+.house-slot {
+  display: none;
+}
+
+p.question-name {
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+p.question-answer {
+  font-size: 1.2em;
+}
+
+.comment .question-answer:not(:last-child) {
+  padding-bottom: 5px;
+  border-bottom: rgb(201, 201, 201) solid 1px;
+}
 
 #draw {
   position: absolute;
   left: 20px;
   bottom: 10%
-}
-
-#heat {
-  position: absolute;
-  left: 20px;
-  top: 20%;
 }

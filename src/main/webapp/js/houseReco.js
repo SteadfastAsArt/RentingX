@@ -1,7 +1,6 @@
 var tb, legend;
 var attributeQueryRenderer;
-var remJSON;
-var pageNum;
+
 require( [
         "esri/map",
         "esri/symbols/SimpleMarkerSymbol",
@@ -23,30 +22,6 @@ require( [
         ArcGISDynamicMapServiceLayer,
         dom, on
       ) {
-          /*map = new Map("map", {  
-            basemap: "osm",
-            center: [120.1551, 30.2741],
-            zoom: 11
-          });*/
-
-          function detailRender() {
-              var markerSymbol = new SimpleMarkerSymbol();
-              markerSymbol.setColor(new Color("#58faff"));
-              markerSymbol.setSize(12);
-              //map.graphics.clear();
-              //houseRecoLayer.clear();
-              detailLayer.clear();
-              for (var i = 8*pageNum-8; i < 8*pageNum; i++){
-                  var content = "Price: " + remJSON[i].price + "<br>Structure: " + remJSON[i].structure;
-                  content += "<br>Area(m^2): " + remJSON[i].area;
-                  var infoTemplate = new InfoTemplate(remJSON[i].commname, content);
-                  var graphic = new Graphic(new Point(remJSON[i].longitude, remJSON[i].latitude), markerSymbol);
-                  graphic.setInfoTemplate(infoTemplate);
-                  detailLayer.add(graphic);
-              }
-          }
-
-          detailsRender = detailRender;
 
           function houseRecommendRender(json) {
               var markerSymbol1 = new SimpleMarkerSymbol();
@@ -80,17 +55,17 @@ require( [
                   content += "<br>Area(m^2): " + json[i].area;
                   var infoTemplate = new InfoTemplate(json[i].commname, content);
                   if (json[i].price < 1000) {
-                    var graphic = new Graphic(new Point(json[i].longitude, json[i].latitude), markerSymbol1);
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol1);
                   } else if (json[i].price < 2000) {
-                    var graphic = new Graphic(new Point(json[i].longitude, json[i].latitude), markerSymbol2);
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol2);
                   } else if (json[i].price < 3000) {
-                    var graphic = new Graphic(new Point(json[i].longitude, json[i].latitude), markerSymbol3);
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol3);
                   } else if (json[i].price < 4000) {
-                    var graphic = new Graphic(new Point(json[i].longitude, json[i].latitude), markerSymbol4);
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol4);
                   } else if (json[i].price < 5000) {
-                    var graphic = new Graphic(new Point(json[i].longitude, json[i].latitude), markerSymbol5);
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol5);
                   } else {
-                    var graphic = new Graphic(new Point(json[i].longitude, json[i].latitude), markerSymbol6);
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol6);
                   }
                   graphic.setInfoTemplate(infoTemplate);
                   houseRecoLayer.add(graphic);
@@ -170,21 +145,13 @@ function getOrder(eleID, group) {
     return order;
 }
 
-$(document).ready(function () {
-    $("#testButton").click(function () {
-        alert("123");
-    })
-})
 
 $(document).ready(function () {
     $("#sub").click(function () {
         var op1 = document.getElementById("notuijian");
-        var op2 = document.getElementById("moren");
         var defau;
         if (op1.checked) {
             defau = 1;
-        } else if (op2.checked) {
-            defau = 2;
         } else {
             defau = 3;
         }
@@ -222,7 +189,8 @@ $(document).ready(function () {
             success: function (result) {
                 remJSON = result;
                 houseRecommendRenderer(result);
-                houseDetail(result);
+                firstPageInit();
+                detailsRender();
             },
             error: function () {
                 alert("Error!");
@@ -231,260 +199,3 @@ $(document).ready(function () {
     });
 });
 
-function houseDetail(json) {
-    var hint1 = document.getElementById('no-solution-hint');
-    var hint2 = document.getElementById('page-hint');
-    if (Object.keys(json).length <= 0) {
-        hint1.innerHTML = "无相应推荐，请重新设定条件。";
-    } else {
-        hint1.innerHTML = "总计推荐结果" + Object.keys(json).length + "条。";
-    }
-    hint2.innerHTML = "第1页 共" + Math.ceil(Object.keys(json).length/8) + "页";
-    var scoleID, headingID, detailID, radarID, commentID;
-    pageNum = 1;
-    for (var i = 0; i < 8; i++){
-        scoleID = "scole" + i;
-        headingID = "heading" + i;
-        detailID = "detail" + i;
-        radarID = "radar" + i;
-        commentID = "comment" + i;
-        scole = document.getElementById(scoleID);
-        scole.innerHTML = "";
-        heading = document.getElementById(headingID);
-        heading.innerHTML = "";
-        detail = document.getElementById(detailID);
-        detail.innerHTML = "";
-        radar = document.getElementById(radarID);
-        radar.innerHTML = "";
-        comment = document.getElementById(commentID);
-        comment.innerHTML = "";
-    }
-    for (var i = 0; i < 8 && i < Object.keys(json).length; i++) {
-        scoleID = "scole" + i;
-        headingID = "heading" + i;
-        detailID = "detail" + i;
-        radarID = "radar" + i;
-        commentID = "comment" + i;
-        scole = document.getElementById(scoleID);
-        scole.innerHTML = json[i].totalscole;
-        heading = document.getElementById(headingID);
-        heading.innerHTML = json[i].commname;
-        detail = document.getElementById(detailID);
-        radar = document.getElementById(radarID);
-        radar.innerHTML = "雷达图待补充。";
-        comment = document.getElementById(commentID);
-        comment.innerHTML = "评论数据待补充。";
-        var content = "价格：" + json[i].price + "元/月，";
-        content += "住房结构：" + json[i].structure;
-        content += "，装潢程度: " + json[i].decoration;
-        content += "，房屋朝向: " + json[i].direction;
-        content += "，楼层高度: " + json[i].hpart + ".";
-        detail.innerHTML = content;
-    }
-}
-
-$(document).ready(function () {
-    $("#first-page").click(function firstPage() {
-        pageNum = 1;
-        var hint2 = document.getElementById('page-hint');
-        hint2.innerHTML = "第1页 共" + Math.ceil(Object.keys(remJSON).length/8) + "页";
-        var scoleID, headingID, detailID, radarID, commentID;
-        for (var i = 0; i < 8; i++){
-            scoleID = "scole" + i;
-            headingID = "heading" + i;
-            detailID = "detail" + i;
-            radarID = "radar" + i;
-            commentID = "comment" + i;
-            scole = document.getElementById(scoleID);
-            scole.innerHTML = "";
-            heading = document.getElementById(headingID);
-            heading.innerHTML = "";
-            detail = document.getElementById(detailID);
-            detail.innerHTML = "";
-            radar = document.getElementById(radarID);
-            radar.innerHTML = "";
-            comment = document.getElementById(commentID);
-            comment.innerHTML = "";
-        }
-        for (var i = 0; i < 8 && i < Object.keys(remJSON).length; i++) {
-            scoleID = "scole" + i;
-            headingID = "heading" + i;
-            detailID = "detail" + i;
-            radarID = "radar" + i;
-            commentID = "comment" + i;
-            scole = document.getElementById(scoleID);
-            scole.innerHTML = remJSON[i].totalscole;
-            heading = document.getElementById(headingID);
-            heading.innerHTML = remJSON[i].commname;
-            detail = document.getElementById(detailID);
-            radar = document.getElementById(radarID);
-            radar.innerHTML = "雷达图待补充。";
-            comment = document.getElementById(commentID);
-            comment.innerHTML = "评论数据待补充。";
-            var content = "价格：" + remJSON[i].price + "元/月，";
-            content += "住房结构：" + remJSON[i].structure;
-            content += "，装潢程度: " + remJSON[i].decoration;
-            content += "，房屋朝向: " + remJSON[i].direction;
-            content += "，楼层高度: " + remJSON[i].hpart + ".";
-            detail.innerHTML = content;
-        }
-        detailsRender();
-    })
-})
-
-$(document).ready(function () {
-    $("#previous-page").click(function () {
-        if (pageNum == 1){
-            alert("警告：已经是第一页了。");
-        }
-        else {
-            pageNum--;
-            var hint2 = document.getElementById('page-hint');
-            hint2.innerHTML = "第" + pageNum + "页 共" + Math.ceil(Object.keys(remJSON).length/8) + "页";
-            var scoleID, headingID, detailID, radarID, commentID;
-            for (var i = 0; i < 8; i++){
-                scoleID = "scole" + i;
-                headingID = "heading" + i;
-                detailID = "detail" + i;
-                radarID = "radar" + i;
-                commentID = "comment" + i;
-                scole = document.getElementById(scoleID);
-                scole.innerHTML = "";
-                heading = document.getElementById(headingID);
-                heading.innerHTML = "";
-                detail = document.getElementById(detailID);
-                detail.innerHTML = "";
-                radar = document.getElementById(radarID);
-                radar.innerHTML = "";
-                comment = document.getElementById(commentID);
-                comment.innerHTML = "";
-            }
-            for (var i = 0; i < 8 && (8*pageNum+i-8) < Object.keys(remJSON).length; i++) {
-                scoleID = "scole" + i;
-                headingID = "heading" + i;
-                detailID = "detail" + i;
-                radarID = "radar" + i;
-                commentID = "comment" + i;
-                scole = document.getElementById(scoleID);
-                scole.innerHTML = remJSON[8*pageNum+i-8].totalscole;
-                heading = document.getElementById(headingID);
-                heading.innerHTML = remJSON[8*pageNum+i-8].commname;
-                detail = document.getElementById(detailID);
-                radar = document.getElementById(radarID);
-                radar.innerHTML = "雷达图待补充。";
-                comment = document.getElementById(commentID);
-                comment.innerHTML = "评论数据待补充。";
-                var content = "价格：" + remJSON[8*pageNum+i-8].price + "元/月，";
-                content += "住房结构：" + remJSON[8*pageNum+i-8].structure;
-                content += "，装潢程度: " + remJSON[8*pageNum+i-8].decoration;
-                content += "，房屋朝向: " + remJSON[8*pageNum+i-8].direction;
-                content += "，楼层高度: " + remJSON[8*pageNum+i-8].hpart + ".";
-                detail.innerHTML = content;
-            }
-            detailsRender();
-        }
-    })
-})
-
-$(document).ready(function () {
-    $("#next-page").click(function () {
-        if (pageNum == Math.ceil(Object.keys(remJSON).length/8)){
-            alert("警告：已经是最后一页了。");
-        }
-        else {
-            pageNum++;
-            var hint2 = document.getElementById('page-hint');
-            hint2.innerHTML = "第" + pageNum + "页 共" + Math.ceil(Object.keys(remJSON).length/8) + "页";
-            var scoleID, headingID, detailID, radarID, commentID;
-            for (var i = 0; i < 8; i++){
-                scoleID = "scole" + i;
-                headingID = "heading" + i;
-                detailID = "detail" + i;
-                radarID = "radar" + i;
-                commentID = "comment" + i;
-                scole = document.getElementById(scoleID);
-                scole.innerHTML = "";
-                heading = document.getElementById(headingID);
-                heading.innerHTML = "";
-                detail = document.getElementById(detailID);
-                detail.innerHTML = "";
-                radar = document.getElementById(radarID);
-                radar.innerHTML = "";
-                comment = document.getElementById(commentID);
-                comment.innerHTML = "";
-            }
-            for (var i = 0; i < 8 && (8*pageNum+i-8) < Object.keys(remJSON).length; i++) {
-                scoleID = "scole" + i;
-                headingID = "heading" + i;
-                detailID = "detail" + i;
-                radarID = "radar" + i;
-                commentID = "comment" + i;
-                scole = document.getElementById(scoleID);
-                scole.innerHTML = remJSON[8*pageNum+i-8].totalscole;
-                heading = document.getElementById(headingID);
-                heading.innerHTML = remJSON[8*pageNum+i-8].commname;
-                detail = document.getElementById(detailID);
-                radar = document.getElementById(radarID);
-                radar.innerHTML = "雷达图待补充。";
-                comment = document.getElementById(commentID);
-                comment.innerHTML = "评论数据待补充。";
-                var content = "价格：" + remJSON[8*pageNum+i-8].price + "元/月，";
-                content += "住房结构：" + remJSON[8*pageNum+i-8].structure;
-                content += "，装潢程度: " + remJSON[8*pageNum+i-8].decoration;
-                content += "，房屋朝向: " + remJSON[8*pageNum+i-8].direction;
-                content += "，楼层高度: " + remJSON[8*pageNum+i-8].hpart + ".";
-                detail.innerHTML = content;
-            }
-            detailsRender();
-        }
-    })
-})
-
-$(document).ready(function () {
-    $("#last-page").click(function () {
-        pageNum = Math.ceil(Object.keys(remJSON).length/8);
-        var hint2 = document.getElementById('page-hint');
-        hint2.innerHTML = "第" + pageNum + "页 共" + Math.ceil(Object.keys(remJSON).length/8) + "页";
-        var scoleID, headingID, detailID, radarID, commentID;
-        for (var i = 0; i < 8; i++){
-            scoleID = "scole" + i;
-            headingID = "heading" + i;
-            detailID = "detail" + i;
-            radarID = "radar" + i;
-            commentID = "comment" + i;
-            scole = document.getElementById(scoleID);
-            scole.innerHTML = "";
-            heading = document.getElementById(headingID);
-            heading.innerHTML = "";
-            detail = document.getElementById(detailID);
-            detail.innerHTML = "";
-            radar = document.getElementById(radarID);
-            radar.innerHTML = "";
-            comment = document.getElementById(commentID);
-            comment.innerHTML = "";
-        }
-        for (var i = 0; i < 8 && (8*pageNum+i-8) < Object.keys(remJSON).length; i++) {
-            scoleID = "scole" + i;
-            headingID = "heading" + i;
-            detailID = "detail" + i;
-            radarID = "radar" + i;
-            commentID = "comment" + i;
-            scole = document.getElementById(scoleID);
-            scole.innerHTML = remJSON[8*pageNum+i-8].totalscole;
-            heading = document.getElementById(headingID);
-            heading.innerHTML = remJSON[8*pageNum+i-8].commname;
-            detail = document.getElementById(detailID);
-            radar = document.getElementById(radarID);
-            radar.innerHTML = "雷达图待补充。";
-            comment = document.getElementById(commentID);
-            comment.innerHTML = "评论数据待补充。";
-            var content = "价格：" + remJSON[8*pageNum+i-8].price + "元/月，";
-            content += "住房结构：" + remJSON[8*pageNum+i-8].structure;
-            content += "，装潢程度: " + remJSON[8*pageNum+i-8].decoration;
-            content += "，房屋朝向: " + remJSON[8*pageNum+i-8].direction;
-            content += "，楼层高度: " + remJSON[8*pageNum+i-8].hpart + ".";
-            detail.innerHTML = content;
-        }
-        detailsRender();
-    })
-})

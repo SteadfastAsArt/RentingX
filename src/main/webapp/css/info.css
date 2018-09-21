@@ -11,6 +11,7 @@ div.radar {
   padding-top: 5px;
   border-top: 1px solid #ccc;
   display: none;
+  height: 300px;
 }
 
 div.radar-toggle {

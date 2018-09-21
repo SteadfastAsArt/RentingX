@@ -10,7 +10,10 @@ jQuery(function () {
             type: "GET",        //请求方式
             traditional: true,
             success: function (result) {
-                attributeQueryRenderer(result);
+                remJSON = result;
+                houseQueryRenderer(result);
+                firstPageInit();
+                detailsRender();
             },
             error: function () {
                 alert("异常！");

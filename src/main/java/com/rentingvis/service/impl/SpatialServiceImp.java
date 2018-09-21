@@ -34,28 +34,14 @@ public class SpatialServiceImp implements SpatialService{
     }
 
     @Override
-    public List<PoiHz> poiQuery( Integer[] tag_list, Double[] pHouse ) {
+    public List<PoiHz> poiQuery( String[] tag_list, Double[] pHouse ) {
         List<PoiHz> poiList = null;
-        List<String> tagL = new ArrayList<String>();
+        List<String> tagL = new ArrayList<>();
 
         try {
-            Map<Integer, String> tag_map = new HashMap<Integer, String>();
-            tag_map.put(0, "购物");
-            tag_map.put(1, "美食");
-            tag_map.put(2, "娱乐");
-            tag_map.put(3, "生活服务");
-            tag_map.put(4, "公司");
-            tag_map.put(5, "教育");
-            tag_map.put(6, "金融");
 
-            /*PoiHzExample poiHzExample = new PoiHzExample();
-            PoiHzExample.Criteria poiCriteria = poiHzExample.createCriteria();
-            for(int x : tag_list){
-                poiCriteria.andStdTagLike("%" + tag_map.get(x) + "%");
-            }*/
-
-            for(int x : tag_list) {
-                tagL.add('%'+tag_map.get(x)+'%');
+            for(String _s : tag_list) {
+                tagL.add('%' + _s + '%');
             }
 
             poiList = poiHzMapper.poiRangeQuery(pHouse[0], pHouse[1], tagL);

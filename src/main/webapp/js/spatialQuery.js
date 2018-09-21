@@ -2,7 +2,7 @@ var envelope = [];
 var selectedHouse = [];
 var range_draw_end_query;
 var picked_points = [];
-
+var clickHouse = false;
 jQuery(function () {
 
     function drawend() {
@@ -14,7 +14,10 @@ jQuery(function () {
             type: "GET",        //请求方式
             traditional: true,
             success: function (result) {
-                attributeQueryRenderer(result);
+                remJSON = result;
+                houseQueryRenderer(result);
+                firstPageInit();
+                detailsRender();
             },
             error: function () {
                 alert("异常！");
@@ -23,35 +26,6 @@ jQuery(function () {
     }
 
     range_draw_end_query = drawend;
-
-    $('#poiq').click(function () {
-        var selectedTag = [];
-
-        $("div.poi-tag").find('li').each(function () {
-            if( $(this).children().is(":checked") ) {
-                selectedTag.push($(this).index());
-            }
-        });
-
-        $.ajax({
-            url: "poi.action",
-            dataType: "json",
-            async: true,
-            data: {
-                "tag_list": selectedTag,
-                "pHouse": selectedHouse
-            },
-            type: "GET",
-            traditional: true,
-            success : function(result){
-                //TODO 请求成功时处理
-                poiQueryRenderer(result);
-            },
-            error : function() {
-                alert("异常！");
-            }
-        });
-    });
 
 });
 
@@ -126,9 +100,9 @@ require([
         //图形点击事件
         function graphic_click(){
             map.graphics.on("click", function (evt) {
+                clickHouse = true;
                 selectedHouse = [];
                 selectedHouse.push(evt.graphic.geometry.x, evt.graphic.geometry.y);
-
                 var symbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
                 var circle = new Circle({
                     center: evt.graphic.geometry,
