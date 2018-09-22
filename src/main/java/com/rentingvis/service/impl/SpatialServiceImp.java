@@ -26,6 +26,20 @@ public class SpatialServiceImp implements SpatialService{
             houseList = spatialQMapper.polygonHouseQuery(
                     coordinates[0], coordinates[1], coordinates[2], coordinates[3]
             );
+
+            houseList.sort( new Comparator<HouseTotal>() {
+                @Override
+                public int compare(HouseTotal h1, HouseTotal h2){
+                    if ( h1.getTotalscole() > h2.getTotalscole() ) {
+                        return -1;
+                    }
+                    else if ( h1.getTotalscole() < h2.getTotalscole() ) {
+                        return 1;
+                    }
+                    else return 0;
+                }
+            });
+
         } catch ( Exception e ) {
             System.out.println(e.getMessage());
         }

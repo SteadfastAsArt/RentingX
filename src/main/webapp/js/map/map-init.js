@@ -14,6 +14,7 @@ require(["esri/map", "esri/layers/GraphicsLayer", "esri/layers/FeatureLayer", "e
     function( Map, GraphicsLayer, FeatureLayer, ArcGISDynamicMapServiceLayer, dom, on ) {
         map = new Map("map", {
         basemap: "dark-gray-vector",
+        //basemap: "osm",
         center: [120.1551, 30.2741],
         zoom: 13
         });

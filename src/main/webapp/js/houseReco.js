@@ -160,21 +160,13 @@ $(document).ready(function () {
             dataType:"json",
             async:true,
             data:{
-                /*area: $("#area").prop('selectedIndex'),
-                structure: $("#structure").prop('selectedIndex'),
-                direction: $("#direction").prop('selectedIndex'),
-                height: $("#height").val(),
-                price: $("#price").prop('selectedIndex'),*/
                 direction: $("#direction").val(),
                 price: $("#price").val(),
                 height: $("#floor").val(),
                 structure: $("#struct").val(),
                 area: $("#area").val(),
                 defau: defau,
-                /*priceOrder: getOrder("priceScole", 1),
-                decorationOrder: getOrder("decorationScole", 1),
-                heightOrder: getOrder("heightScole", 1),
-                directionOrder: getOrder("directionScole", 1),*/
+
                 transportOrder: getOrder("transportScole", 2),
                 serviceOrder: getOrder("serviceScole", 2),
                 environmentOrder: getOrder("environmentScole", 2),

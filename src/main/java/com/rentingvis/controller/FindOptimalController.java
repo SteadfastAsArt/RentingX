@@ -18,10 +18,10 @@ public class FindOptimalController {
     @Autowired
     private FindOptimalService findOptimalService;
 
-    @RequestMapping(value ="/findoptimal", method = {RequestMethod.GET})
+    @RequestMapping(value ="/findoptimal", method = { RequestMethod.GET })
     @ResponseBody
-    public List<HouseTotal> showCustomized ( @RequestParam(value="picked_points") Double[] picked_points, @RequestParam(value="firstk") Integer firstk ) {
-        List<HouseTotal> result = findOptimalService.shortestSumDistance( picked_points, firstk );
+    public List<HouseTotal> showCustomized ( @RequestParam(value="picked_points") Double[] picked_points ) {
+        List<HouseTotal> result = findOptimalService.shortestSumDistance( picked_points );
         return result;
     }
 }

@@ -1,11 +1,12 @@
 var envelope = [];
 var selectedHouse = [];
 var range_draw_end_query;
+var pickPlace_draw_end_query;
 var picked_points = [];
 var clickHouse = false;
 jQuery(function () {
 
-    function drawend() {
+    function drawend1() {
         $.ajax({
             url: "polygon.action",
             dataType: "json",   //返回格式为json
@@ -27,7 +28,29 @@ jQuery(function () {
         });
     }
 
-    range_draw_end_query = drawend;
+    range_draw_end_query = drawend1;
+
+    function drawend2() {
+        $.ajax({
+            url: "findoptimal.action",
+            dataType: "json",   //返回格式为json
+            async: true,        //请求是否异步，默认为异步，这也是ajax重要特性
+            data: { "picked_points": picked_points },
+            type: "GET",        //请求方式
+            traditional: true,
+            success: function (result) {
+                remJSON = result;
+                houseQueryRenderer(result);
+                firstPageInit();
+                detailsRender();
+            },
+            error: function () {
+                alert("异常！");
+            }
+        });
+    }
+
+    pickPlace_draw_end_query = drawend2();
 
 });
 
@@ -84,7 +107,7 @@ require([
                 for(i in evt.geometry.points) {
                     picked_points.push ( evt.geometry.points[i][0], evt.geometry.points[i][1] );
                 }
-                console.log(picked_points);
+                pickPlace_draw_end_query();
             }
             //extentQueryRender
             else {
