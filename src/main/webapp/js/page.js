@@ -57,7 +57,7 @@ function pageInit() {
         comment = document.getElementById(commentID);
         comment.innerHTML = "";
     }
-    if(remJSON.length == 0){
+    if(remJSON.length == 0 || pageNum == 0){
         $('.house-slot').css('display', 'none');
         return;
     }
@@ -168,8 +168,7 @@ $(document).ready(function () {
         if (remJSON.length == 0) return;
         if (pageNum == Math.ceil(Object.keys(remJSON).length/8)){
             alert("警告：已经是最后一页了。");
-        }
-        else {
+        } else {
             pageNum++;
             var hint2 = document.getElementById('page-hint');
             hint2.innerHTML = "第" + pageNum + "页 共" + Math.ceil(Object.keys(remJSON).length/8) + "页";

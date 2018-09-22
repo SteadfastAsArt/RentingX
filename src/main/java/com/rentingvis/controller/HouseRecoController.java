@@ -18,8 +18,8 @@ public class HouseRecoController {
 
     @RequestMapping ( value="/showReco", method = { RequestMethod.GET } )
     @ResponseBody
-    public List<HouseTotal> recoHouses(String direction, String price, String height, String structure, String area, int defau, int transportOrder, int serviceOrder, int environmentOrder, int educationOrder, int treatmentOrder, int shopOrder, int lifeOrder, int entertainmentOrder, int financeOrder) {
-        List<HouseTotal> result = houseRecoService.recoHouses(direction, price, height, structure, area, defau, transportOrder, serviceOrder, environmentOrder, educationOrder, treatmentOrder, shopOrder, lifeOrder, entertainmentOrder, financeOrder);
+    public List<HouseTotal> recoHouses(String houseName, String direction, String price, String height, String structure, String area, int defau, int transportOrder, int serviceOrder, int environmentOrder, int educationOrder, int treatmentOrder, int shopOrder, int lifeOrder, int entertainmentOrder, int financeOrder) {
+        List<HouseTotal> result = houseRecoService.recoHouses(houseName, direction, price, height, structure, area, defau, transportOrder, serviceOrder, environmentOrder, educationOrder, treatmentOrder, shopOrder, lifeOrder, entertainmentOrder, financeOrder);
         return result;
     }
 

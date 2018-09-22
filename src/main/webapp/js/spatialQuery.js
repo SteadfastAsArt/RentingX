@@ -43,6 +43,8 @@ jQuery(function () {
                 houseQueryRenderer(result);
                 firstPageInit();
                 detailsRender();
+                if(starClosed)
+                    $('#btn-star').click();
             },
             error: function () {
                 alert("异常！");
@@ -50,7 +52,7 @@ jQuery(function () {
         });
     }
 
-    pickPlace_draw_end_query = drawend2();
+    pickPlace_draw_end_query = drawend2;
 
 });
 
@@ -107,6 +109,7 @@ require([
                 for(i in evt.geometry.points) {
                     picked_points.push ( evt.geometry.points[i][0], evt.geometry.points[i][1] );
                 }
+                console.log(picked_points);
                 pickPlace_draw_end_query();
             }
             //extentQueryRender

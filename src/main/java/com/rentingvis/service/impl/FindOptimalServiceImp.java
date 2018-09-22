@@ -3,7 +3,6 @@ package com.rentingvis.service.impl;
 import java.util.*;
 
 import com.rentingvis.po.HouseTotalExample;
-import com.rentingvis.service.impl.FindOptimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

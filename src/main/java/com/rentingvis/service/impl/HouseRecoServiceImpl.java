@@ -29,7 +29,7 @@ public class HouseRecoServiceImpl implements HouseRecoService {
     }
 
     @Override
-    public List<HouseTotal> recoHouses ( String direction, String price, String height,
+    public List<HouseTotal> recoHouses ( String houseName, String direction, String price, String height,
                                          String structure, String area, int defau, int transportOrder, int serviceOrder,
                                          int environmentOrder, int educationOrder, int treatmentOrder, int shopOrder,
                                          int lifeOrder, int entertainmentOrder, int financeOrder ) {
@@ -39,7 +39,10 @@ public class HouseRecoServiceImpl implements HouseRecoService {
             HouseTotalExample housesExample = new HouseTotalExample();
             HouseTotalExample.Criteria housesCriteria = housesExample.createCriteria();
 
-            //todo
+            if (!(houseName.equals(""))){
+                housesCriteria.andCommnameLike("%"+houseName+"%");
+            }
+
             if (!(direction.equals("全部")||direction.equals(""))){
                 String directionArr[] = direction.split("\\s+");
                 for (int i = 0; i < directionArr.length; i++){

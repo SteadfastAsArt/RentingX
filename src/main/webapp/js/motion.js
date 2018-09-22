@@ -103,13 +103,15 @@ jQuery(function () {
     houseRecoLayer.clear();
     poiLayer.clear();
     houseBasic.clear();
+
+    if(!starClosed)
+        $('#btn-star').click();
+
   });
 
   //绘制多点
   $("#pick").click(function () {
-      map.disableMapNavigation();
+      //map.disableMapNavigation();
       tb.activate("multipoint");
   });
-
-
 });

@@ -147,7 +147,7 @@ function getOrder(eleID, group) {
 
 
 $(document).ready(function () {
-    $("#sub").click(function () {
+    $("#sub, #findByName").click(function () {
         var op1 = document.getElementById("notuijian");
         var defau;
         if (op1.checked) {
@@ -160,13 +160,13 @@ $(document).ready(function () {
             dataType:"json",
             async:true,
             data:{
+                houseName: $("#commname").val(),
                 direction: $("#direction").val(),
                 price: $("#price").val(),
                 height: $("#floor").val(),
                 structure: $("#struct").val(),
                 area: $("#area").val(),
                 defau: defau,
-
                 transportOrder: getOrder("transportScole", 2),
                 serviceOrder: getOrder("serviceScole", 2),
                 environmentOrder: getOrder("environmentScole", 2),
@@ -183,7 +183,8 @@ $(document).ready(function () {
                 houseRecommendRenderer(result);
                 firstPageInit();
                 detailsRender();
-                $('#btn-star').click();
+                if(starClosed)
+                    $('#btn-star').click();
             },
             error: function () {
                 alert("Error!");

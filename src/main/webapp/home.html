@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./css/map.css">
   <link rel="stylesheet" href="./css/info.css">
   <link rel="stylesheet" href="./css/display-poi.css">
+  <link rel="stylesheet" href="./css/tool-guide.css">
   <!-- 复选框样式 -->
   <link rel="stylesheet" href="./css/jquery-labelauty.css">
   <style>
@@ -80,14 +81,22 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="#">帮助</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">工具 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" id="rectangle">拉框筛选</a></li>
+                <li><a href="#" id="fixedPoints">定点邻近筛选</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#" id="clear">清除</a></li>
+              </ul>
+            </li>
           </ul>
           <form class="navbar-form navbar-left">
             <div class="form-group">
               <div class="input-group">
-                <input id="firstk" type="text" class="form-control" placeholder="关键字(请用空格分隔)"/>
+                <input id="commname" type="text" class="form-control" placeholder="小区名称关键词"/>
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" title="在地图上搜索关键字"><span
-                            class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    <button class="btn btn-default" type="button" title="根据小区名称关键词查找租房" id="findByName"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                   </span>
               </div>
             </div>
@@ -96,7 +105,7 @@
 
           <!-- panel-control-buttons -->
           <div class="btn-group navbar-right" role="group">
-            <button type="button" class="btn btn-default navbar-btn" title="扩展功能" id="btn-exts">
+            <button type="button" class="btn btn-default navbar-btn" title="扩展功能" id="btn-exts"> <!--style="display: none;"-->
               <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
             </button>
             <button type="button" class="btn btn-default navbar-btn" title="快速设置" id="btn-qcog">
@@ -112,16 +121,17 @@
   </div><!-- /.header -->
   <div class="main">
     <div class="view" id="map">
-      <!--div id="homeButton"></div-->
-      <div id="draw" class="esriSimpleSlider esriSimpleSliderVertical" style="z-index: 40">
-        <div class="esriSimpleSliderIncrementButton" role="button" id="drawpoly" title="框选">
-          <span role="presentation">+</span>
-        </div>
-        <div class="esriSimpleSliderIncrementButton" role="button" id="pick" title="必经之处">
-          <span role="presentation">?</span>
-        </div>
-        <div class="esriSimpleSliderIncrementButton" role="button" id="graphic-clear" title="清除图层">
-          <span role="presentation">C</span>
+      <div style="display: none">
+        <div id="draw" class="esriSimpleSlider esriSimpleSliderVertical" style="z-index: 40">
+          <div class="esriSimpleSliderIncrementButton" role="button" id="drawpoly" title="框选">
+            <span role="presentation">+</span>
+          </div>
+          <div class="esriSimpleSliderIncrementButton" role="button" id="pick" title="必经之处">
+            <span role="presentation">?</span>
+          </div>
+          <div class="esriSimpleSliderIncrementButton" role="button" id="graphic-clear" title="清除图层">
+            <span role="presentation">C</span>
+          </div>
         </div>
       </div>
     </div><!-- /.view -->
@@ -134,7 +144,7 @@
           </div>
           <div class="panel-body">
             <p class="hint">热力图标签</p>
-            <p>在下面, 您可以选择你希望显示的<span class="special">热力图</span>类型. balabala...不知道讲什么...</p>
+            <p>在下面, 您可以选择你希望显示的<span class="special">热力图</span>类型.</p>
             <div id="heat">
               <ul class="dowebok">
                 <li><input type="checkbox" name="checkbox" data-labelauty="区位" id="location"></li>
@@ -319,9 +329,9 @@
             <h4>查看推荐</h4>
           </div>
           <div class="panel-body">
-            <p class="hint">租房推荐:</p>
-            <p>以下是我们根据您的条件筛选得到的租房以及其评价, 您可以点击它们以查看更详细的信息.</p>
-            <p id="no-solution-hint">无相应推荐，请重新设定条件。</p>
+            <!--p class="hint">租房推荐:</p-->
+            <p>以下是我们根据您的条件筛选得到的租房及其评价, 您可以<span class="special">点击</span>它们以查看详细信息.</p>
+            <p id="no-solution-hint" ><span class="special">无相应推荐，请重新设定条件...</span></p>
           </div>
           <!-- List group -->
           <div class="list-group house-slots">
@@ -487,7 +497,7 @@
 <script src="./js/info.js"></script>
 <script src="./js/bind-select.js"></script>
 <script src="./js/load-comments.js"></script>
-
+<script src="./js/tool-guide.js"></script>
 
 <script src="./js/jquery.gridly.js"></script>
 <script src="./js/sample.js"></script>
@@ -497,11 +507,11 @@
 
 <!-- ArcGIS relevant APIs -->
 <script src="./js/map/map-init.js"></script>
+<script src="./js/spatialQuery.js"></script>
 <script src="./js/map/pointRender.js"></script>
 
 <script src="./js/houseReco.js"></script>
-<script src="./js/spatialQuery.js"></script>
-<script src="./js/display-poi.js"></script>
 
+<script src="./js/display-poi.js"></script>
 
 </html>

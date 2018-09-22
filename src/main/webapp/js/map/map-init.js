@@ -40,55 +40,55 @@ require(["esri/map", "esri/layers/GraphicsLayer", "esri/layers/FeatureLayer", "e
         var featureLayer = new FeatureLayer(serverURL+"1");
         map.addLayer(featureLayer);
 
-        locationURL = "http://222.205.60.249:6080/arcgis/rest/services/LocationMap/MapServer/";
+        locationURL = "http://222.205.72.136:6080/arcgis/rest/services/LocationMap/MapServer/";
         var layer1 = new ArcGISDynamicMapServiceLayer(locationURL);
         layer1.opacity = 0.5;
         map.addLayer(layer1);
         map.getLayer("layer2").hide();
 
-        priceperURL = "http://222.205.60.249:6080/arcgis/rest/services/PricePerMap/MapServer/";
+        priceperURL = "http://222.205.72.136:6080/arcgis/rest/services/PricePerMap/MapServer/";
         var layer2 = new ArcGISDynamicMapServiceLayer(priceperURL);
         layer2.opacity = 0.5;
         map.addLayer(layer2);
         map.getLayer("layer3").hide();
 
-        transportURL = "http://222.205.60.249:6080/arcgis/rest/services/TransportMap/MapServer/";
+        transportURL = "http://222.205.72.136:6080/arcgis/rest/services/TransportMap/MapServer/";
         var layer3 = new ArcGISDynamicMapServiceLayer(transportURL);
         layer3.opacity = 0.5;
         map.addLayer(layer3);
         map.getLayer("layer4").hide();
 
-        environmentURL = "http://222.205.60.249:6080/arcgis/rest/services/EnvironmentMap/MapServer/";
+        environmentURL = "http://222.205.72.136:6080/arcgis/rest/services/EnvironmentMap/MapServer/";
         var layer4 = new ArcGISDynamicMapServiceLayer(environmentURL);
         layer4.opacity = 0.5;
         map.addLayer(layer4);
         map.getLayer("layer5").hide();
 
-        educationURL = "http://222.205.60.249:6080/arcgis/rest/services/EducationMap/MapServer/";
+        educationURL = "http://222.205.72.136:6080/arcgis/rest/services/EducationMap/MapServer/";
         var layer5 = new ArcGISDynamicMapServiceLayer(educationURL);
         layer5.opacity = 0.5;
         map.addLayer(layer5);
         map.getLayer("layer6").hide();
 
-        entertainmentURL = "http://222.205.60.249:6080/arcgis/rest/services/EntertainmentMap/MapServer/";
+        entertainmentURL = "http://222.205.72.136:6080/arcgis/rest/services/EntertainmentMap/MapServer/";
         var layer6 = new ArcGISDynamicMapServiceLayer(entertainmentURL);
         layer6.opacity = 0.5;
         map.addLayer(layer6);
         map.getLayer("layer7").hide();
 
-        shopURL = "http://222.205.60.249:6080/arcgis/rest/services/ShopMap/MapServer/";
+        shopURL = "http://222.205.72.136:6080/arcgis/rest/services/ShopMap/MapServer/";
         var layer7 = new ArcGISDynamicMapServiceLayer(shopURL);
         layer7.opacity = 0.5;
         map.addLayer(layer7);
         map.getLayer("layer8").hide();
 
-        financeURL = "http://222.205.60.249:6080/arcgis/rest/services/FinanceMap/MapServer/";
+        financeURL = "http://222.205.72.136:6080/arcgis/rest/services/FinanceMap/MapServer/";
         var layer8 = new ArcGISDynamicMapServiceLayer(financeURL);
         layer8.opacity = 0.5;
         map.addLayer(layer8);
         map.getLayer("layer9").hide();
 
-        lifeURL = "http://222.205.60.249:6080/arcgis/rest/services/LifeMap/MapServer/";
+        lifeURL = "http://222.205.72.136:6080/arcgis/rest/services/LifeMap/MapServer/";
         var layer9 = new ArcGISDynamicMapServiceLayer(lifeURL);
         layer9.opacity = 0.5;
         map.addLayer(layer9);
