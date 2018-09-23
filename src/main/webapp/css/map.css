@@ -21,6 +21,7 @@ div.main {
 }
 
 div.view {
+  position: relative;
   flex: 1 1 100%;
   /* flex: flex-grow flex-shrink flex-basis */
 }

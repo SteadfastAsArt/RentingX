@@ -56,7 +56,7 @@
                 var thisId = thisInput.attr('id');
                 switch (thisId) {
                   case 'direction':
-                    thisInput.val('南 东南 西南');
+                    thisInput.val('南');
                     break;
                   case 'price':
                     thisInput.val('1000~3000');
@@ -81,19 +81,19 @@
                 var thisId = thisInput.attr('id');
                 switch (thisId) {
                   case 'direction':
-                    thisInput.val('南 东南 西南');
+                    thisInput.val('东');
                     break;
                   case 'price':
-                    thisInput.val('0~5000');
+                    thisInput.val('2000~10000');
                     break;
                   case 'floor':
-                    thisInput.val('中');
+                    thisInput.val('全部');
                     break;
                   case 'struct':
                     thisInput.val('3室2厅2卫');
                     break;
                   case 'area':
-                    thisInput.val('120~1000');
+                    thisInput.val('全部');
                     break;
                   default:
                     break;

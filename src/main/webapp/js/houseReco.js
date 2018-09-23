@@ -24,48 +24,34 @@ require( [
       ) {
 
           function houseRecommendRender(json) {
-              var markerSymbol1 = new SimpleMarkerSymbol();
-              markerSymbol1.setColor(new Color("#00FF00"));
-              markerSymbol1.setSize(10);
 
-              var markerSymbol2 = new SimpleMarkerSymbol();
-              markerSymbol2.setColor(new Color("#00CD66"));
-              markerSymbol2.setSize(10);
 
-              var markerSymbol3 = new SimpleMarkerSymbol();
-              markerSymbol3.setColor(new Color("#FFFF00"));
-              markerSymbol3.setSize(10);
-
-              var markerSymbol4 = new SimpleMarkerSymbol();
-              markerSymbol4.setColor(new Color("#FFD700"));
-              markerSymbol4.setSize(10);
-
-              var markerSymbol5 = new SimpleMarkerSymbol();
-              markerSymbol5.setColor(new Color("#FF7F24"));
-              markerSymbol5.setSize(10);
-
-              var markerSymbol6 = new SimpleMarkerSymbol();
-              markerSymbol6.setColor(new Color("#FF0000"));
-              markerSymbol6.setSize(10);
-              
-              map.graphics.clear();
               houseRecoLayer.clear();
+
               for (i in json) {
                   var content = "价格: " + json[i].price + "<br>房屋结构: " + json[i].structure;
                   content += "<br>面积(平方米): " + json[i].area;
                   var infoTemplate = new InfoTemplate(json[i].commname, content);
-                  if (json[i].price < 1000) {
-                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol1);
-                  } else if (json[i].price < 2000) {
-                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol2);
+
+                  var pMarkerSymbol = new SimpleMarkerSymbol();
+                  pMarkerSymbol.setSize(16);
+                  pMarkerSymbol.setPath(svgPath);
+
+                  if (json[i].price < 2000) {
+                      pMarkerSymbol.setColor(new Color("#426fff"));
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), pMarkerSymbol);
                   } else if (json[i].price < 3000) {
-                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol3);
+                      pMarkerSymbol.setColor(new Color("#908eff"));
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), pMarkerSymbol);
                   } else if (json[i].price < 4000) {
-                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol4);
+                      pMarkerSymbol.setColor(new Color("#ffb3c3"));
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), pMarkerSymbol);
                   } else if (json[i].price < 5000) {
-                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol5);
+                      pMarkerSymbol.setColor(new Color("#ff6167"));
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), pMarkerSymbol);
                   } else {
-                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), markerSymbol6);
+                      pMarkerSymbol.setColor(new Color("#ff0000"));
+                    var graphic = new Graphic(new Point(json[i].lon, json[i].lat), pMarkerSymbol);
                   }
                   graphic.setInfoTemplate(infoTemplate);
                   houseRecoLayer.add(graphic);

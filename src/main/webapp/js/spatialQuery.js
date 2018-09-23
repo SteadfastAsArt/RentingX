@@ -68,19 +68,16 @@ require([
         Graphic, Color,
         dom, on
     ) {
-        // fill symbol used for extent, polygon and freehand polygon, use a picture fill symbol
-        // the images folder contains additional fill images, other options: sand.png, swamp.png or stiple.png
-        /*var fillSymbol = new PictureFillSymbol(
-            "images/mangrove.png",
-            new SimpleLineSymbol( SimpleLineSymbol.STYLE_SOLID, new Color('#000'), 1 ), 42, 42 );*/
-
+        // Range Query polygon symbol
         var fillSymbol = new SimpleFillSymbol( SimpleFillSymbol.STYLE_SOLID,
                                                 new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT,
-                                                new Color([255,0,0]), 2), new Color([255,255,0,0.1]) );
+                                                new Color([255,0,0]), 2), new Color([255,255,0,0.05]) );
 
         var markerSymbol = new SimpleMarkerSymbol();
-        markerSymbol.setColor(new Color("#FF60AF"));
-        markerSymbol.setSize(10);
+        markerSymbol.setPath(svglocate1);
+        markerSymbol.setColor(new Color("#ff1100"));
+        markerSymbol.setSize(30);
+        markerSymbol.setOutline(null);
 
         map.on("load", initToolbar);
         map.on("load", graphic_click);
@@ -115,9 +112,9 @@ require([
             //extentQueryRender
             else {
                 symbol = fillSymbol;
-                map.graphics.clear();
                 polygonLayer.clear();
                 poiRangeLayer.clear();
+                poiLayer.clear();
                 polygonLayer.add(new Graphic(geo, symbol));
                 envelope = [];
                 envelope.push(geo.xmin, geo.ymin, geo.xmax, geo.ymax);
@@ -132,13 +129,14 @@ require([
                 clickHouse = true;
                 selectedHouse = [];
                 selectedHouse.push(evt.graphic.geometry.x, evt.graphic.geometry.y);
-                var symbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
+                var symbolFill = new SimpleFillSymbol().setColor(null);
+                symbolFill.setOutline(new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new Color("AAAAAA"), 3));
                 var circle = new Circle({
                     center: evt.graphic.geometry,
                     geodesic: true,
                     radius: 500
                 });
-                var graphic = new Graphic(circle, symbol);
+                var graphic = new Graphic(circle, symbolFill);
                 poiLayer.clear();
                 poiRangeLayer.clear();
                 poiRangeLayer.add(graphic);
@@ -148,13 +146,14 @@ require([
                 clickHouse = true;
                 selectedHouse = [];
                 selectedHouse.push(evt.graphic.geometry.x, evt.graphic.geometry.y);
-                var symbol = new SimpleFillSymbol().setColor(null).outline.setColor("blue");
+                var symbolFill = new SimpleFillSymbol().setColor(null);
+                symbolFill.setOutline(new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASH, new Color("AAAAAA"), 3));
                 var circle = new Circle({
                     center: evt.graphic.geometry,
                     geodesic: true,
                     radius: 500
                 });
-                var graphic = new Graphic(circle, symbol);
+                var graphic = new Graphic(circle, symbolFill);
                 poiLayer.clear();
                 poiRangeLayer.clear();
                 poiRangeLayer.add(graphic);

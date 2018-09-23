@@ -21,8 +21,9 @@ require( [
     //高亮
     function detailRender() {
         var markerSymbol = new SimpleMarkerSymbol();
-        markerSymbol.setColor(new Color("#58faff"));
-        markerSymbol.setSize(12);
+        markerSymbol.setPath(svgPath);
+        markerSymbol.setColor(new Color("#00fff6"));
+        markerSymbol.setSize(16);
         detailLayer.clear();
         for (var i = 8*pageNum-8; i < 8*pageNum && i < Object.keys(remJSON).length; i++){
             var content = "价格: " + remJSON[i].price + "<br>房屋结构: " + remJSON[i].structure;
