@@ -13,8 +13,11 @@ To enumerate these, lianjia, anjuke, fangtianxia, 58tongcheng, touming, etc. The
 You can: <br>
 1. Choose your attributes of interests under certain conditions.
 2. Query an region of interests to find how many houses are there and choose any certain houses to find surrounding POIs in your interests tags.
+![](https://github.com/SteadfastAsArt/RentingVis/blob/master/src/main/webapp/images/intr1.png)
 3. Have an intuitive look on how price distributed in city-wide. At the same time, we calculate a ranking model for 150m * 150m large pixel and each house have their ranking. The model contain parameters from inner to outer factors, the latter cover transport  accessibility, public service and natural environment. We hava a total score and user can also make their own priority based on which you value most.
-4. Pick at most 3 places you are about to visit frequently and dont know where to settle, we will recommend you a list of houses based on route network distance and ranking model. 
+![](https://github.com/SteadfastAsArt/RentingVis/blob/master/src/main/webapp/images/intr3.png)
+4. Pick several places you are about to visit frequently and dont know where to settle, we will recommend you a list of houses based on route network distance and ranking model. 
+![](https://github.com/SteadfastAsArt/RentingVis/blob/master/src/main/webapp/images/intr2.png)
 5. If you are intereted in a certain community, you can query its comments data for more details.
 6. Data mining, each query will present you an *overview outlook* of results and also accurate to each house's data statistics. You can easily adjust what to present on the comparison graph.
 
@@ -32,3 +35,5 @@ Database: PostgreSQL + PostGIS extension
 ## Restrictions & Furthver Development
 1. Dynamic data crawling
 2. Chinese house renting market is mainly conducted through real world access and don't have an open source information presentation platform.
+
+<img>
