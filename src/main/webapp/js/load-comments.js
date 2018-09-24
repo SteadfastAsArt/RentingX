@@ -20,7 +20,7 @@ jQuery(function () {
                 }
             },
             error: function () {
-                alert("异常！");
+                alert("评论查询异常！");
             }
         });
     });

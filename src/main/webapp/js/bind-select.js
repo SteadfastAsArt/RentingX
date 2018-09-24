@@ -14,7 +14,7 @@
           var li = $(this);
           var select = li.text();
           var input = li.parents('div.input-group-btn').siblings('input');
-          var arr = input.val().split(' ');
+          var arr = (input.val() || " ").split(' ');
           if (arr.indexOf('全部') != -1) {
             input.val(select);
           } else {

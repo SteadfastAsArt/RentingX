@@ -1,6 +1,7 @@
 var extsClosed = true;
 var qcogClosed = true;
 var starClosed = true;
+var tb;
 
 jQuery(function () {
   console.log('hello, welcome to use rental screening and evaluation platform(HangZhou, China)');
@@ -85,8 +86,6 @@ jQuery(function () {
     }
   });
 
-
-
   //绘制多边形
   $("#drawpoly").click(function () {
     map.disableMapNavigation();
@@ -104,6 +103,8 @@ jQuery(function () {
     poiLayer.clear();
     houseBasic.clear();
 
+    $('#commname').val("");
+    $('#legend-price').hide(100);
     if(!starClosed)
         $('#btn-star').click();
 
@@ -114,4 +115,5 @@ jQuery(function () {
       //map.disableMapNavigation();
       tb.activate("multipoint");
   });
+
 });

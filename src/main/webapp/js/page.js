@@ -3,7 +3,6 @@ var pageNum;
 var detailsRender;
 
 require( [
-    "esri/map",
     "esri/symbols/SimpleMarkerSymbol",
     "esri/geometry/Point",
     "esri/toolbars/draw",
@@ -11,7 +10,7 @@ require( [
     "esri/Color",
     "esri/InfoTemplate",
     "dojo/dom", "dojo/on", "dojo/domReady!"
-], function(Map,
+], function(
             SimpleMarkerSymbol,
             Point, Draw,
             GraphicsLayer, Graphic,
@@ -79,6 +78,7 @@ function pageInit() {
     }
 }
 
+//CALLED WHEN each query ends
 function firstPageInit() {
     var hint1 = document.getElementById('no-solution-hint');
     if (Object.keys(remJSON).length <= 0) {
@@ -122,6 +122,7 @@ function firstPage() {
     detailsRender();
 }
 
+//上一页
 $(document).ready(function () {
     $("#previous-page").click(function () {
         if (remJSON == null) return;
@@ -163,6 +164,7 @@ $(document).ready(function () {
     })
 });
 
+//下一页
 $(document).ready(function () {
     $("#next-page").click(function () {
         if (remJSON == null) return;
@@ -203,6 +205,7 @@ $(document).ready(function () {
     })
 });
 
+//尾页
 $(document).ready(function () {
     $("#last-page").click(function () {
         if (remJSON == null) return;

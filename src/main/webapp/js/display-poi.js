@@ -11,10 +11,12 @@ $(function () {
         poiPanel.css('display', 'block');
         clickHouse = false;
     });
+
     $('#close-display-poi').click(function(){
         var thisButton = $(this);
         thisButton.parents('div.panel').css('display', 'none');
     });
+
     $('button.btn-display-poi').each(function () {
         $(this).click(function () {
             var before = $('button.btn-primary.btn-display-poi');
@@ -35,14 +37,15 @@ $(function () {
                 type: "GET",
                 traditional: true,
                 success : function(result){
-                    //TODO 请求成功时处理
+
                     poiQueryRenderer(result);
 
                 },
                 error : function() {
-                    alert("异常！");
+                    alert("POI查询异常！");
                 }
             });
         });
     });
+
 });

@@ -1,0 +1,54 @@
+/* 以下样式用于页面布局. */
+html,
+body,
+div.wrapper {
+  height: 100%;
+}
+
+div.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+div.header,
+div.footer {
+  flex: 0 0 auto;
+}
+
+div.main {
+  flex: 1 1 auto;
+  overflow: auto;
+  background-color: rgb(231, 231, 231);
+  background-image: url('../img/timg.gif');
+}
+
+img {
+  margin: auto;
+}
+
+/* 以下样式用于微调美化. */
+div.header nav,
+div.footer nav {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+div.header nav button.navbar-toggle {
+  margin: 8px 16px;
+}
+
+div.footer nav p.navbar-text {
+  float: none;
+  text-align: center;
+}
+
+div.footer nav p.navbar-text a.navbar-link {
+  color: rgb(0, 63, 136);
+  /* 浙大求是蓝 */
+}
+
+.carousel-caption {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: gray;
+}

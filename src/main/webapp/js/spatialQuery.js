@@ -3,7 +3,8 @@ var selectedHouse = [];
 var range_draw_end_query;
 var pickPlace_draw_end_query;
 var picked_points = [];
-var clickHouse = false;
+var clickHouse = false;   //Display-POI panel
+
 jQuery(function () {
 
     function drawend1() {
@@ -58,12 +59,12 @@ jQuery(function () {
 
 
 require([
-        "esri/map", "esri/toolbars/draw",
+        "esri/toolbars/draw",
         "esri/symbols/SimpleMarkerSymbol","esri/symbols/SimpleLineSymbol", "esri/symbols/SimpleFillSymbol", "esri/geometry/Circle",
         "esri/graphic", "esri/Color",
         "dojo/dom", "dojo/on", "dojo/domReady!"
     ], function(
-        Map, Draw,
+        Draw,
         SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol, Circle,
         Graphic, Color,
         dom, on
@@ -73,6 +74,7 @@ require([
                                                 new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT,
                                                 new Color([255,0,0]), 2), new Color([255,255,0,0.05]) );
 
+        //Pick-places symbol
         var markerSymbol = new SimpleMarkerSymbol();
         markerSymbol.setPath(svglocate1);
         markerSymbol.setColor(new Color("#ff1100"));
@@ -84,9 +86,7 @@ require([
 
         function initToolbar(){
             tb = new Draw(map);
-
             tb.on("draw-end", drawingRender);
-
         }
 
         function drawingRender(evt) {
